@@ -1,100 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Municipal Watch - Local Business Intelligence</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harry Elegonye — Product Builder</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+--ink:#10131A;
+--surface:#181C25;
+--surface-2:#1F2430;
+--paper:#EDEAE0;
+--muted:#8B93A3;
+--amber:#E2A33B;
+--sage:#6B9080;
+--hair: rgba(237,234,224,0.11);
+--hair-strong: rgba(237,234,224,0.2);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+margin:0;
+background:var(--ink);
+color:var(--paper);
+font-family:'Inter',sans-serif;
+-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+.serif{font-family:'Fraunces',serif;}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+
+/* status bar */
+.statusbar{
+border-bottom:1px solid var(--hair);
+background:var(--surface);
+}
+.statusbar .wrap{
+display:flex;align-items:center;justify-content:space-between;
+padding:12px 28px;
+font-family:'IBM Plex Mono',monospace;
+font-size:12.5px;
+letter-spacing:.02em;
+color:var(--muted);
+flex-wrap:wrap;
+gap:8px;
+}
+.dot{
+display:inline-block;width:6px;height:6px;border-radius:50%;
+background:var(--sage);margin-right:8px;
+box-shadow:0 0 0 3px rgba(107,144,128,0.18);
+}
+.statusbar strong{color:var(--paper);font-weight:500;}
+
+/* hero */
+header.hero{padding:96px 0 88px;}
+.eyebrow{
+font-family:'IBM Plex Mono',monospace;
+font-size:12.5px;
+color:var(--amber);
+letter-spacing:.08em;
+text-transform:uppercase;
+margin-bottom:22px;
+display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);display:inline-block;}
+h1{
+font-family:'Fraunces',serif;
+font-optical-sizing:auto;
+font-weight:600;
+font-size:clamp(40px,6.4vw,74px);
+line-height:1.03;
+margin:0 0 22px;
+letter-spacing:-0.01em;
+}
+h1 em{font-style:italic;font-weight:400;color:var(--amber);}
+.lede{
+font-size:19px;
+line-height:1.65;
+color:#C9C5B8;
+max-width:640px;
+margin:0 0 40px;
+}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{
+font-family:'IBM Plex Mono',monospace;
+font-size:13.5px;
+padding:13px 22px;
+border-radius:3px;
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+gap:8px;
+transition:transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn-primary{background:var(--amber);color:#1A1305;font-weight:500;}
+.btn-primary:hover{transform:translateY(-1px);background:#eeb257;}
+.btn-ghost{border:1px solid var(--hair-strong);color:var(--paper);}
+.btn-ghost:hover{border-color:var(--amber);color:var(--amber);}
+
+/* section headings */
+.section{padding:64px 0;border-top:1px solid var(--hair);}
+.section-head{
+display:flex;justify-content:space-between;align-items:flex-end;
+margin-bottom:44px;flex-wrap:wrap;gap:16px;
+}
+.section-head h2{
+font-family:'Fraunces',serif;font-weight:600;
+font-size:clamp(26px,3.4vw,34px);margin:0;letter-spacing:-.01em;
+}
+.section-head p{color:var(--muted);margin:6px 0 0;font-size:15px;max-width:440px;}
+.count{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);}
+
+/* project cards */
+.projects{display:flex;flex-direction:column;gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:6px;overflow:hidden;}
+.project{
+background:var(--surface);
+padding:32px;
+display:grid;
+grid-template-columns:180px 1fr;
+gap:28px;
+opacity:0;
+transform:translateY(10px);
+animation:rise .5s ease forwards;
+}
+@keyframes rise{to{opacity:1;transform:translateY(0);}}
+.project:nth-child(1){animation-delay:.02s;}
+.project:nth-child(2){animation-delay:.08s;}
+.project:nth-child(3){animation-delay:.14s;}
+.project:nth-child(4){animation-delay:.2s;}
+.project:nth-child(5){animation-delay:.26s;}
+
+.p-meta{display:flex;flex-direction:column;gap:10px;}
+.live-pill{
+font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;
+color:var(--sage);display:inline-flex;align-items:center;gap:7px;
+}
+.live-pill .dot{margin:0;}
+.p-domain{
+font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);
+word-break:break-all;
+}
+.p-domain a{text-decoration:none;border-bottom:1px dotted var(--hair-strong);}
+.p-domain a:hover{color:var(--amber);border-color:var(--amber);}
+
+.p-body h3{
+font-family:'Fraunces',serif;font-weight:600;font-size:23px;margin:0 0 8px;
+}
+.p-pitch{color:#C9C5B8;font-size:15px;line-height:1.55;margin:0 0 16px;max-width:560px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{
+font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+padding:5px 10px;border:1px solid var(--hair-strong);border-radius:20px;
+color:var(--muted);
+}
+
+@media (max-width:640px){
+.project{grid-template-columns:1fr;gap:14px;padding:24px;}
+}
+
+/* capabilities */
+.cap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:6px;overflow:hidden;}
+.cap{background:var(--surface);padding:26px 28px;}
+.cap h4{
+font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
+text-transform:uppercase;color:var(--amber);margin:0 0 14px;
+}
+.cap ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;}
+.cap li{font-size:14.5px;color:#C9C5B8;padding-left:16px;position:relative;}
+.cap li::before{content:"—";position:absolute;left:0;color:var(--muted);}
+@media (max-width:640px){.cap-grid{grid-template-columns:1fr;}}
+
+/* contact / footer */
+footer{padding:80px 0 60px;border-top:1px solid var(--hair);}
+footer h2{
+font-family:'Fraunces',serif;font-weight:600;
+font-size:clamp(28px,4.4vw,44px);margin:0 0 20px;letter-spacing:-.01em;
+max-width:600px;
+}
+footer p{color:var(--muted);font-size:15px;max-width:480px;margin:0 0 32px;}
+.foot-bottom{
+margin-top:56px;padding-top:24px;border-top:1px solid var(--hair);
+display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce){
+html{scroll-behavior:auto;}
+.project{animation:none;opacity:1;transform:none;}
+}
+
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+</style>
 </head>
-<body class="bg-slate-50 text-slate-900">
-    <header class="gradient-bg text-white py-16">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">Municipal Watch</h1>
-            <p class="text-xl md:text-2xl text-slate-300 mb-8 max-w-2xl mx-auto">Software-Powered City Intelligence for Local Business Owners. Never get blindsided by city council decisions again.</p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#pricing" class="bg-amber-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition">Start Free Pilot</a>
-                <a href="#how-it-works" class="bg-transparent border border-slate-400 hover:border-white text-white py-3 px-8 rounded-lg transition">How It Works</a>
-            </div>
-        </div>
-    </header>
+<body>
 
-    <section class="py-20" id="how-it-works">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="p-8 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 font-bold text-xl">1</div>
-                    <h3 class="text-xl font-bold mb-4">We Monitor</h3>
-                    <p class="text-slate-600">Our Software tracks every City Council meeting, Planning Commission agenda, and zoning permit in Your City.</p>
-                </div>
-                <div class="p-8 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 font-bold text-xl">2</div>
-                    <h3 class="text-xl font-bold mb-4">Software Summarizes</h3>
-                    <p class="text-slate-600">Complex municipal jargon is translated into plain English briefs focused on business impact.</p>
-                </div>
-                <div class="p-8 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 font-bold text-xl">3</div>
-                    <h3 class="text-xl font-bold mb-4">You Act</h3>
-                    <p class="text-slate-600">Weekly briefs delivered to your inbox, with real-time alerts for the things that matter most to your street.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="statusbar">
+<div class="wrap">
+<span><span class="dot"></span><strong>5 products</strong> in production</span>
+<span>municipalwatch.org · clearscan.org · fifamap.org · hopemap.live · thelacityguide.com</span>
+</div>
+</div>
 
-    <section id="pricing" class="py-20 bg-slate-100">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Founding Member Plans</h2>
-                <p class="text-slate-600">Special early pricing for the first 10 Local Businesses.</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white p-10 rounded-3xl shadow-lg border-2 border-transparent">
-                    <h3 class="text-2xl font-bold mb-2">Starter</h3>
-                    <div class="flex items-baseline mb-6">
-                        <span class="text-4xl font-bold">$49</span>
-                        <span class="text-slate-500 ml-2">/month</span>
-                    </div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center text-slate-700"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Weekly Your City Municipal Brief</li>
-                        <li class="flex items-center text-slate-700"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Planning & Zoning Updates</li>
-                        <li class="flex items-center text-slate-700"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Permit Activity Reports</li>
-                    </ul>
-                    <a href="https://buy.stripe.com/28E8wPgT6Cdep7eejd7q00" class="block text-center bg-amber-600 text-white font-bold py-4 px-6 rounded-xl hover:bg-black transition">Subscribe Starter</a>
-                </div>
-                <div class="bg-white p-10 rounded-3xl shadow-lg border-2 border-blue-600 relative">
-                    <span class="absolute top-0 right-10 -translate-y-1/2 bg-amber-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Most Popular</span>
-                    <h3 class="text-2xl font-bold mb-2">Pro</h3>
-                    <div class="flex items-baseline mb-6">
-                        <span class="text-4xl font-bold">$99</span>
-                        <span class="text-slate-500 ml-2">/month</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 text-slate-700">
-                        <li class="flex items-center font-bold text-slate-900"><svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Everything in Starter</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Real-time SMS/Email Alerts</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Custom Keyword Tracking</li>
-                    </ul>
-                    <a href="https://buy.stripe.com/5kQ7sL1tf8J0yhgmr7q01" class="block text-center bg-amber-600 text-white font-bold py-4 px-6 rounded-xl hover:bg-blue-700 transition">Subscribe Pro</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="wrap">
 
-    <section class="py-20">
-        <div class="container mx-auto px-6 max-w-3xl text-center">
-            <h2 class="text-3xl font-bold mb-8">Operational Intelligence, Not Just Info</h2>
-            <p class="text-slate-600 text-lg mb-8">Municipal Watch was built to give Local Business owners, landlords, and contractors an unfair advantage. We ensure you're never the last to know about a zoning change or a major council vote that could affect your property value or business operations.</p>
-            <p class="font-bold text-slate-900">— Harry Chocoberry, Founder of Municipal Watch</p>
-        </div>
-    </section>
+<header class="hero">
+<div class="eyebrow">Portfolio — building as Chocoberry</div>
+<h1>Harry Elegonye<br>builds products that <em>ship.</em></h1>
+<p class="lede">Five live products across civic tech, healthtech, crisis response, and travel — each one built end to end: real payments, real data, real users finding them through search. Not concepts. Not mockups. Running code with a domain and a checkout link.</p>
+<div class="cta-row">
+<a class="btn btn-primary" href="mailto:Harrychocoberry@gmail.com">✉ Get in touch</a>
+<a class="btn btn-ghost" href="#work">View the work ↓</a>
+</div>
+</header>
 
-    <footer class="gradient-bg text-slate-400 py-12 border-t border-slate-800">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2026 Municipal Watch. Serving Your City, California.</p>
-        </div>
-    </footer>
+<section class="section" id="work">
+<div class="section-head">
+<div>
+<h2>Shipped products</h2>
+<p>Each one solves a specific, unglamorous problem for a specific person — then gets out of their way.</p>
+</div>
+<span class="count">05 / 05</span>
+</div>
+
+<div class="projects">
+
+<div class="project">
+<div class="p-meta">
+<span class="live-pill"><span class="dot"></span>LIVE</span>
+<span class="p-domain"><a href="https://municipalwatch.org" target="_blank" rel="noopener">municipalwatch.org</a></span>
+</div>
+<div class="p-body">
+<h3>Municipal Watch</h3>
+<p class="p-pitch">A monitoring service that tracks every city council meeting, planning commission agenda, and zoning permit in a local business owner's city, then turns the jargon into a plain-English weekly brief. Real-time alerts for anything that could hit a business's street or property value.</p>
+<div class="chips">
+<span class="chip">Stripe subscriptions</span>
+<span class="chip">Tiered pricing</span>
+<span class="chip">Civic data monitoring</span>
+<span class="chip">Plain-language automation</span>
+</div>
+</div>
+</div>
+
+<div class="project">
+<div class="p-meta">
+<span class="live-pill"><span class="dot"></span>LIVE</span>
+<span class="p-domain"><a href="https://clearscan.org" target="_blank" rel="noopener">clearscan.org</a></span>
+</div>
+<div class="p-body">
+<h3>ClearScan</h3>
+<p class="p-pitch">Radiology reports are written for doctors, not patients. ClearScan takes a report and translates the medical findings into language a patient can actually understand in seconds — a small product aimed squarely at a moment of real anxiety.</p>
+<div class="chips">
+<span class="chip">Healthtech</span>
+<span class="chip">Patient-facing UX</span>
+<span class="chip">Plain-language translation</span>
+</div>
+</div>
+</div>
+
+<div class="project">
+<div class="p-meta">
+<span class="live-pill"><span class="dot"></span>LIVE</span>
+<span class="p-domain"><a href="https://fifamap.org" target="_blank" rel="noopener">fifamap.org</a></span>
+</div>
+<div class="p-body">
+<h3>FIFAMap</h3>
+<p class="p-pitch">A trip planner for the 2026 World Cup covering all 16 host cities across three countries — match schedules, hotels, transport, and nightlife, with an AI itinerary builder that works in eight languages. Monetized through affiliate travel bookings, a paid planning tier, and a full sponsorship program for venues and brands.</p>
+<div class="chips">
+<span class="chip">AI itinerary planning</span>
+<span class="chip">8-language i18n</span>
+<span class="chip">Affiliate revenue</span>
+<span class="chip">Sponsorship tiers</span>
+<span class="chip">Stripe paywall</span>
+</div>
+</div>
+</div>
+
+<div class="project">
+<div class="p-meta">
+<span class="live-pill"><span class="dot"></span>LIVE</span>
+<span class="p-domain"><a href="https://hopemap.live" target="_blank" rel="noopener">hopemap.live</a></span>
+</div>
+<div class="p-body">
+<h3>HopeMap</h3>
+<p class="p-pitch">A real-time, community-verified map of shelters, food banks, and mental health resources for people in crisis — built on the insight that static directories fail the moment a shelter fills up. Includes an org dashboard for nonprofits, offline mode for prepaid phones, and AI-powered resource matching. Launching in Los Angeles with a phased national rollout plan.</p>
+<div class="chips">
+<span class="chip">React Native + React</span>
+<span class="chip">PostgreSQL / PostGIS</span>
+<span class="chip">Claude API matching</span>
+<span class="chip">Firebase real-time</span>
+<span class="chip">Product strategy</span>
+</div>
+</div>
+</div>
+
+<div class="project">
+<div class="p-meta">
+<span class="live-pill"><span class="dot"></span>LIVE</span>
+<span class="p-domain"><a href="https://thelacityguide.com" target="_blank" rel="noopener">thelacityguide.com</a></span>
+</div>
+<div class="p-body">
+<h3>The LA City Guide</h3>
+<p class="p-pitch">An independent visitor guide to Los Angeles for the 2028 Olympics — neighborhoods, venue transport, honest dining picks, and an itinerary builder, written for a global audience with country-specific entry and culture notes. Backed by a full advertising rate card, from single listings to six-figure enterprise sponsorships, plus a paid concierge trip-planning service.</p>
+<div class="chips">
+<span class="chip">Content strategy</span>
+<span class="chip">Itinerary builder</span>
+<span class="chip">Monetization design</span>
+<span class="chip">International UX</span>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="section-head">
+<div>
+<h2>What building five of these teaches you</h2>
+<p>The through-line isn't the industry. It's the muscle: find a real problem, ship something that works, and make the money side hold together.</p>
+</div>
+</div>
+<div class="cap-grid">
+<div class="cap">
+<h4>Product &amp; strategy</h4>
+<ul>
+<li>Scoping an idea down to something one person can build and ship</li>
+<li>Writing positioning and copy that a stranger understands in five seconds</li>
+<li>Phased go-to-market plans, from single city to national rollout</li>
+</ul>
+</div>
+<div class="cap">
+<h4>Engineering</h4>
+<ul>
+<li>Full-stack builds across web and React Native</li>
+<li>Geospatial data with PostgreSQL / PostGIS</li>
+<li>AI integration for matching, translation, and itinerary generation</li>
+</ul>
+</div>
+<div class="cap">
+<h4>Monetization</h4>
+<ul>
+<li>Stripe subscriptions and one-time checkout flows</li>
+<li>Affiliate revenue across hotels, flights, tours, and tickets</li>
+<li>Tiered sponsorship and advertising rate cards, built from scratch</li>
+</ul>
+</div>
+<div class="cap">
+<h4>Craft</h4>
+<ul>
+<li>Multilingual, accessible interfaces for global audiences</li>
+<li>Real-time features: live status, alerts, offline mode</li>
+<li>SEO and metadata done properly, not as an afterthought</li>
+</ul>
+</div>
+</div>
+</section>
+
+<footer>
+<h2>Looking for someone who ships, not someone who plans to?</h2>
+<p>I'm open to product, full-stack, and founding engineer roles, and to freelance builds for teams who need an idea turned into something real fast.</p>
+<div class="cta-row">
+<a class="btn btn-primary" href="mailto:Harrychocoberry@gmail.com">✉ Harrychocoberry@gmail.com</a>
+</div>
+<div class="foot-bottom">
+<span>Harry Elegonye · Chocoberry</span>
+<span>chocoberryexclusive.com</span>
+</div>
+</footer>
+
+</div>
+
 </body>
 </html>
