@@ -3,376 +3,344 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harry E — Product Builder</title>
+<title>Harry E — Product Builder at Chocoberry</title>
+<meta name="description" content="Harry E builds and ships complete products: Municipal Watch, ClearScan, FIFAMap, HopeMap and The LA City Guide. Open to product, full-stack and founding engineer roles.">
+<meta name="theme-color" content="#2A1B17">
+<link rel="canonical" href="https://chocoberryexclusive.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chocoberryexclusive.com/">
+<meta property="og:title" content="Harry E — I turn confusing things into products people can use">
+<meta property="og:description" content="Five live products across civic tech, healthtech, crisis response and travel, each built end to end.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A1B17'/%3E%3Cpath d='M32 54c-11 0-18-9-18-20 0-8 6-14 18-14s18 6 18 14c0 11-7 20-18 20z' fill='%23E0457B'/%3E%3Cpath d='M32 20c-2-6-7-9-12-9 3 4 7 7 12 9zm0 0c2-6 7-9 12-9-3 4-7 7-12 9z' fill='%2397C27A'/%3E%3Cg fill='%23F7C9D6'%3E%3Ccircle cx='25' cy='31' r='1.6'/%3E%3Ccircle cx='38' cy='30' r='1.6'/%3E%3Ccircle cx='31' cy='38' r='1.6'/%3E%3Ccircle cx='24' cy='42' r='1.6'/%3E%3Ccircle cx='39' cy='41' r='1.6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Harry E","url":"https://chocoberryexclusive.com/","email":"mailto:info@chocoberryexclusive.com","jobTitle":"Product builder","worksFor":{"@type":"Organization","name":"Chocoberry"}}
+</script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
-
 :root{
---ink:#10131A;
---surface:#181C25;
---surface-2:#1F2430;
---paper:#EDEAE0;
---muted:#8B93A3;
---amber:#E2A33B;
---sage:#6B9080;
---hair: rgba(237,234,224,0.11);
---hair-strong: rgba(237,234,224,0.2);
+  --cocoa:#2A1B17;      /* page */
+  --ganache:#38241F;    /* raised surfaces */
+  --nib:#4A3029;        /* lines */
+  --milk:#F6E7DA;       /* text */
+  --dust:#C3A99C;       /* secondary text */
+  --berry:#E0457B;      /* action */
+  --berry-hi:#F06A97;
+  --berry-pale:#F7C9D6;
+  --leaf:#97C27A;       /* live / ok */
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --text:'Source Serif 4',Georgia,serif;
 }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--cocoa)}
+body{margin:0;background:var(--cocoa);color:var(--milk);font-family:var(--text);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+::selection{background:var(--berry);color:#fff}
+:focus-visible{outline:3px solid var(--berry-pale);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--berry);color:#fff;padding:8px 14px;border-radius:8px;font-family:var(--display);z-index:10}
+.skip:focus{left:8px}
 
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-margin:0;
-background:var(--ink);
-color:var(--paper);
-font-family:'Inter',sans-serif;
--webkit-font-smoothing:antialiased;
-}
-a{color:inherit;}
-.mono{font-family:'IBM Plex Mono',monospace;}
-.serif{font-family:'Fraunces',serif;}
-
-.wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
-
-/* status bar */
-.statusbar{
-border-bottom:1px solid var(--hair);
-background:var(--surface);
-}
-.statusbar .wrap{
-display:flex;align-items:center;justify-content:space-between;
-padding:12px 28px;
-font-family:'IBM Plex Mono',monospace;
-font-size:12.5px;
-letter-spacing:.02em;
-color:var(--muted);
-flex-wrap:wrap;
-gap:8px;
-}
-.dot{
-display:inline-block;width:6px;height:6px;border-radius:50%;
-background:var(--sage);margin-right:8px;
-box-shadow:0 0 0 3px rgba(107,144,128,0.18);
-}
-.statusbar strong{color:var(--paper);font-weight:500;}
+/* nav */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;font-family:var(--display)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-size:18px;line-height:1.2}
+.brand svg{width:34px;height:34px}
+.brand small{display:block;font-weight:400;font-size:13px;color:var(--dust)}
+.nav nav{display:flex;gap:22px;font-size:15px}
+.nav nav a{text-decoration:none;color:var(--dust)}
+.nav nav a:hover{color:var(--milk)}
 
 /* hero */
-header.hero{padding:96px 0 88px;}
-.eyebrow{
-font-family:'IBM Plex Mono',monospace;
-font-size:12.5px;
-color:var(--amber);
-letter-spacing:.08em;
-text-transform:uppercase;
-margin-bottom:22px;
-display:flex;align-items:center;gap:10px;
-}
-.eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);display:inline-block;}
-h1{
-font-family:'Fraunces',serif;
-font-optical-sizing:auto;
-font-weight:600;
-font-size:clamp(40px,6.4vw,74px);
-line-height:1.03;
-margin:0 0 22px;
-letter-spacing:-0.01em;
-}
-h1 em{font-style:italic;font-weight:400;color:var(--amber);}
-.lede{
-font-size:19px;
-line-height:1.65;
-color:#C9C5B8;
-max-width:640px;
-margin:0 0 40px;
-}
-.cta-row{display:flex;gap:14px;flex-wrap:wrap;}
-.btn{
-font-family:'IBM Plex Mono',monospace;
-font-size:13.5px;
-padding:13px 22px;
-border-radius:3px;
-text-decoration:none;
-display:inline-flex;
-align-items:center;
-gap:8px;
-transition:transform .15s ease, background .15s ease, border-color .15s ease;
-}
-.btn-primary{background:var(--amber);color:#1A1305;font-weight:500;}
-.btn-primary:hover{transform:translateY(-1px);background:#eeb257;}
-.btn-ghost{border:1px solid var(--hair-strong);color:var(--paper);}
-.btn-ghost:hover{border-color:var(--amber);color:var(--amber);}
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;align-items:center;padding:64px 0 96px}
+h1{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:clamp(44px,6.2vw,80px);line-height:.98;letter-spacing:-.02em;margin:0 0 26px}
+.lede{color:var(--dust);font-size:19px;max-width:30em;margin:0 0 34px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:16px;text-decoration:none;padding:14px 22px;border-radius:999px;border:0;cursor:pointer;transition:background .15s,transform .15s}
+.btn-berry{background:var(--berry);color:#fff}
+.btn-berry:hover{background:var(--berry-hi)}
+.btn-berry:active{transform:scale(.97)}
+.btn-line{color:var(--milk);box-shadow:inset 0 0 0 1.5px var(--nib)}
+.btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--dust)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
 
-/* section headings */
-.section{padding:64px 0;border-top:1px solid var(--hair);}
-.section-head{
-display:flex;justify-content:space-between;align-items:flex-end;
-margin-bottom:44px;flex-wrap:wrap;gap:16px;
-}
-.section-head h2{
-font-family:'Fraunces',serif;font-weight:600;
-font-size:clamp(26px,3.4vw,34px);margin:0;letter-spacing:-.01em;
-}
-.section-head p{color:var(--muted);margin:6px 0 0;font-size:15px;max-width:440px;}
-.count{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);}
+/* translator */
+.tr{background:var(--ganache);border-radius:22px;padding:10px}
+.tr-tabs{display:flex;gap:4px;padding:4px;font-family:var(--display);font-size:14px;flex-wrap:wrap}
+.tr-tabs button{font:inherit;color:var(--dust);background:none;border:0;padding:8px 14px;border-radius:999px;cursor:pointer}
+.tr-tabs button:hover{color:var(--milk)}
+.tr-tabs button[aria-selected="true"]{background:var(--cocoa);color:var(--milk)}
+.tr-sheet{background:var(--milk);color:#3B2620;border-radius:14px;padding:26px 26px 22px;margin-top:6px;min-height:300px;display:flex;flex-direction:column}
+.tr-src{font-family:var(--display);font-size:13px;color:#7E6155;margin:0 0 12px;display:flex;justify-content:space-between;gap:12px}
+.tr-text{font-size:17px;line-height:1.55;flex:1;margin:0}
+.tr-text.is-plain{font-family:var(--display);font-size:21px;line-height:1.4;font-weight:500;color:#2A1B17}
+.tr-text .w{opacity:0;display:inline-block;transform:translateY(4px);animation:w .32s ease forwards}
+@keyframes w{to{opacity:1;transform:none}}
+.tr-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap}
+.tr-foot .btn{padding:11px 18px;font-size:15px}
+.tr-by{font-family:var(--display);font-size:13px;color:#7E6155}
+.tr-by a{color:#B32E5E}
+.nojs-pair p{margin:0 0 12px}
 
-/* project cards */
-.projects{display:flex;flex-direction:column;gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:6px;overflow:hidden;}
-.project{
-background:var(--surface);
-padding:32px;
-display:grid;
-grid-template-columns:180px 1fr;
-gap:28px;
-opacity:0;
-transform:translateY(10px);
-animation:rise .5s ease forwards;
-}
-@keyframes rise{to{opacity:1;transform:translateY(0);}}
-.project:nth-child(1){animation-delay:.02s;}
-.project:nth-child(2){animation-delay:.08s;}
-.project:nth-child(3){animation-delay:.14s;}
-.project:nth-child(4){animation-delay:.2s;}
-.project:nth-child(5){animation-delay:.26s;}
+/* sections */
+section{padding:88px 0;border-top:1px solid var(--nib)}
+h2{font-family:var(--display);font-weight:700;font-stretch:85%;font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-.015em;margin:0 0 14px}
+.intro{color:var(--dust);max-width:34em;margin:0 0 52px}
 
-.p-meta{display:flex;flex-direction:column;gap:10px;}
-.live-pill{
-font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;
-color:var(--sage);display:inline-flex;align-items:center;gap:7px;
-}
-.live-pill .dot{margin:0;}
-.p-domain{
-font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);
-word-break:break-all;
-}
-.p-domain a{text-decoration:none;border-bottom:1px dotted var(--hair-strong);}
-.p-domain a:hover{color:var(--amber);border-color:var(--amber);}
+/* products */
+.product{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:40px;padding:40px 0;border-top:1px solid var(--nib)}
+.intro + .product{border-top:0;padding-top:0}
+.p-name{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.1;margin:0 0 10px}
+.p-live{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:15px;text-decoration:none;color:var(--dust)}
+.p-live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--leaf);box-shadow:0 0 0 4px rgba(151,194,122,.18)}
+.p-live:hover{color:var(--berry-pale)}
+.p-pitch{margin:0 0 18px;max-width:36em}
+.p-built{font-family:var(--display);font-size:15px;color:var(--dust);margin:0}
+.p-built b{color:var(--milk);font-weight:600}
 
-.p-body h3{
-font-family:'Fraunces',serif;font-weight:600;font-size:23px;margin:0 0 8px;
-}
-.p-pitch{color:#C9C5B8;font-size:15px;line-height:1.55;margin:0 0 16px;max-width:560px;}
-.chips{display:flex;flex-wrap:wrap;gap:8px;}
-.chip{
-font-family:'IBM Plex Mono',monospace;font-size:11.5px;
-padding:5px 10px;border:1px solid var(--hair-strong);border-radius:20px;
-color:var(--muted);
-}
+/* how */
+.how{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 64px}
+.how h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 10px;color:var(--berry-pale)}
+.how ul{margin:0;padding-left:1.1em;color:var(--dust)}
+.how li{margin-bottom:6px}
+.how li::marker{color:var(--berry)}
 
-@media (max-width:640px){
-.project{grid-template-columns:1fr;gap:14px;padding:24px;}
-}
+/* contact */
+.contact h2{max-width:14em}
+.mail{display:inline-block;font-family:var(--display);font-weight:800;font-stretch:78%;font-size:clamp(28px,6.4vw,82px);line-height:1.05;letter-spacing:-.025em;text-decoration:none;color:var(--berry);margin:22px 0 0;overflow-wrap:normal;background:linear-gradient(var(--berry),var(--berry)) 0 100%/0 4px no-repeat;transition:background-size .3s}
+.mail:hover{background-size:100% 4px}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:28px 0 40px;border-top:1px solid var(--nib);font-family:var(--display);font-size:14px;color:var(--dust)}
 
-/* capabilities */
-.cap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:6px;overflow:hidden;}
-.cap{background:var(--surface);padding:26px 28px;}
-.cap h4{
-font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
-text-transform:uppercase;color:var(--amber);margin:0 0 14px;
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:40px;padding-top:32px}
+  .product{grid-template-columns:1fr;gap:12px}
+  .how{grid-template-columns:1fr;gap:32px}
 }
-.cap ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;}
-.cap li{font-size:14.5px;color:#C9C5B8;padding-left:16px;position:relative;}
-.cap li::before{content:"—";position:absolute;left:0;color:var(--muted);}
-@media (max-width:640px){.cap-grid{grid-template-columns:1fr;}}
-
-/* contact / footer */
-footer{padding:80px 0 60px;border-top:1px solid var(--hair);}
-footer h2{
-font-family:'Fraunces',serif;font-weight:600;
-font-size:clamp(28px,4.4vw,44px);margin:0 0 20px;letter-spacing:-.01em;
-max-width:600px;
+@media (max-width:520px){
+  body{font-size:17px}
+  .nav nav a.hide-sm{display:none}
+  .tr-sheet{padding:20px;min-height:340px}
+  section{padding:64px 0}
 }
-footer p{color:var(--muted);font-size:15px;max-width:480px;margin:0 0 32px;}
-.foot-bottom{
-margin-top:56px;padding-top:24px;border-top:1px solid var(--hair);
-display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
-font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .tr-text .w{animation:none;opacity:1;transform:none}
+  .mail{transition:none}
 }
-
-@media (prefers-reduced-motion: reduce){
-html{scroll-behavior:auto;}
-.project{animation:none;opacity:1;transform:none;}
-}
-
-:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
 </style>
 </head>
 <body>
-
-<div class="statusbar">
-<div class="wrap">
-<span><span class="dot"></span><strong>5 products</strong> in production</span>
-<span>municipalwatch.org · clearscan.org · fifamap.org · hopemap.live · thelacityguide.com</span>
-</div>
-</div>
+<a class="skip" href="#work">Skip to the work</a>
 
 <div class="wrap">
-
-<header class="hero">
-<div class="eyebrow">Portfolio — building as Chocoberry</div>
-<h1>Harry E<br>builds products that <em>ship.</em></h1>
-<p class="lede">Five live products across civic tech, healthtech, crisis response, and travel — each one built end to end: real payments, real data, real users finding them through search. Not concepts. Not mockups. Running code with a domain and a checkout link.</p>
-<div class="cta-row">
-<a class="btn btn-primary" href="mailto:Harrychocoberry@gmail.com">✉ Get in touch</a>
-<a class="btn btn-ghost" href="#work">View the work ↓</a>
-</div>
+<header class="nav">
+  <a class="brand" href="/" aria-label="Harry E, Chocoberry, home">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 56c-12 0-19-10-19-22 0-9 7-15 19-15s19 6 19 15c0 12-7 22-19 22z" fill="#E0457B"/><path d="M32 19c-2-7-8-10-13-10 3 5 8 8 13 10zm0 0c2-7 8-10 13-10-3 5-8 8-13 10z" fill="#97C27A"/><g fill="#F7C9D6"><circle cx="24" cy="31" r="1.7"/><circle cx="39" cy="30" r="1.7"/><circle cx="31" cy="39" r="1.7"/><circle cx="23" cy="44" r="1.7"/><circle cx="40" cy="43" r="1.7"/></g></svg>
+    <span>Harry E<small>Chocoberry</small></span>
+  </a>
+  <nav aria-label="Main">
+    <a href="#work">Work</a>
+    <a class="hide-sm" href="#how">How I work</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-<section class="section" id="work">
-<div class="section-head">
-<div>
-<h2>Shipped products</h2>
-<p>Each one solves a specific, unglamorous problem for a specific person — then gets out of their way.</p>
-</div>
-<span class="count">05 / 05</span>
+<main>
+<div class="hero">
+  <div>
+    <h1>I turn confusing things into products people can use.</h1>
+    <p class="lede">Council agendas, radiology reports, shelter listings, a World Cup across three countries. I build the product that makes them make sense, end to end: payments, data, search and the people who show up.</p>
+    <div class="actions">
+      <a class="btn btn-berry" href="mailto:info@chocoberryexclusive.com">Email me</a>
+      <a class="btn btn-line" href="#work">See five live products</a>
+    </div>
+  </div>
+
+  <div class="tr" id="tr" aria-label="Try it: what my products do">
+    <div class="tr-sheet nojs-pair">
+      <p class="tr-src">Council agenda, before Municipal Watch</p>
+      <p>Consideration of a Conditional Use Permit (CUP 2026-0114) pursuant to LAMC §12.24-W.1 for the on-site sale of a full line of alcoholic beverages in conjunction with a 4,200 sq. ft. restaurant in the C2-1VL zone.</p>
+      <p class="tr-src">After</p>
+      <p><strong>A 4,200 sq ft restaurant on your block wants to serve a full bar until 2 a.m. The council votes Tuesday, and you can comment until then.</strong></p>
+    </div>
+  </div>
 </div>
 
-<div class="projects">
+<section id="work" aria-labelledby="work-h">
+  <h2 id="work-h">Five products, all live</h2>
+  <p class="intro">Each one solves a specific, unglamorous problem for a specific person, then gets out of their way.</p>
 
-<div class="project">
-<div class="p-meta">
-<span class="live-pill"><span class="dot"></span>LIVE</span>
-<span class="p-domain"><a href="https://municipalwatch.org" target="_blank" rel="noopener">municipalwatch.org</a></span>
-</div>
-<div class="p-body">
-<h3>Municipal Watch</h3>
-<p class="p-pitch">A monitoring service that tracks every city council meeting, planning commission agenda, and zoning permit in a local business owner's city, then turns the jargon into a plain-English weekly brief. Real-time alerts for anything that could hit a business's street or property value.</p>
-<div class="chips">
-<span class="chip">Stripe subscriptions</span>
-<span class="chip">Tiered pricing</span>
-<span class="chip">Civic data monitoring</span>
-<span class="chip">Plain-language automation</span>
-</div>
-</div>
-</div>
+  <article class="product">
+    <div>
+      <h3 class="p-name">Municipal Watch</h3>
+      <a class="p-live" href="https://municipalwatch.org" target="_blank" rel="noopener">municipalwatch.org</a>
+    </div>
+    <div>
+      <p class="p-pitch">Tracks every city council meeting, planning commission agenda and zoning permit in a local business owner's city, then turns the jargon into a plain-English weekly brief. Real-time alerts flag anything that could hit their street or property value.</p>
+      <p class="p-built"><b>Built:</b> Stripe subscriptions with tiered pricing, civic data monitoring, plain-language automation</p>
+    </div>
+  </article>
 
-<div class="project">
-<div class="p-meta">
-<span class="live-pill"><span class="dot"></span>LIVE</span>
-<span class="p-domain"><a href="https://clearscan.org" target="_blank" rel="noopener">clearscan.org</a></span>
-</div>
-<div class="p-body">
-<h3>ClearScan</h3>
-<p class="p-pitch">Radiology reports are written for doctors, not patients. ClearScan takes a report and translates the medical findings into language a patient can actually understand in seconds — a small product aimed squarely at a moment of real anxiety.</p>
-<div class="chips">
-<span class="chip">Healthtech</span>
-<span class="chip">Patient-facing UX</span>
-<span class="chip">Plain-language translation</span>
-</div>
-</div>
-</div>
+  <article class="product">
+    <div>
+      <h3 class="p-name">ClearScan</h3>
+      <a class="p-live" href="https://clearscan.org" target="_blank" rel="noopener">clearscan.org</a>
+    </div>
+    <div>
+      <p class="p-pitch">Radiology reports are written for doctors, not patients. ClearScan translates the findings into language a patient can understand in seconds, a small product aimed squarely at a moment of real anxiety.</p>
+      <p class="p-built"><b>Built:</b> patient-facing healthtech UX, plain-language translation</p>
+    </div>
+  </article>
 
-<div class="project">
-<div class="p-meta">
-<span class="live-pill"><span class="dot"></span>LIVE</span>
-<span class="p-domain"><a href="https://fifamap.org" target="_blank" rel="noopener">fifamap.org</a></span>
-</div>
-<div class="p-body">
-<h3>FIFAMap</h3>
-<p class="p-pitch">A trip planner for the 2026 World Cup covering all 16 host cities across three countries — match schedules, hotels, transport, and nightlife, with an AI itinerary builder that works in eight languages. Monetized through affiliate travel bookings, a paid planning tier, and a full sponsorship program for venues and brands.</p>
-<div class="chips">
-<span class="chip">AI itinerary planning</span>
-<span class="chip">8-language i18n</span>
-<span class="chip">Affiliate revenue</span>
-<span class="chip">Sponsorship tiers</span>
-<span class="chip">Stripe paywall</span>
-</div>
-</div>
-</div>
+  <article class="product">
+    <div>
+      <h3 class="p-name">FIFAMap</h3>
+      <a class="p-live" href="https://fifamap.org" target="_blank" rel="noopener">fifamap.org</a>
+    </div>
+    <div>
+      <p class="p-pitch">A trip planner for the 2026 World Cup covering all 16 host cities in three countries: match schedules, hotels, transport and nightlife, with an AI itinerary builder in eight languages. It earns through affiliate bookings, a paid planning tier and a sponsorship program for venues and brands.</p>
+      <p class="p-built"><b>Built:</b> AI itinerary planning, eight-language i18n, affiliate revenue, sponsorship tiers, Stripe paywall</p>
+    </div>
+  </article>
 
-<div class="project">
-<div class="p-meta">
-<span class="live-pill"><span class="dot"></span>LIVE</span>
-<span class="p-domain"><a href="https://hopemap.live" target="_blank" rel="noopener">hopemap.live</a></span>
-</div>
-<div class="p-body">
-<h3>HopeMap</h3>
-<p class="p-pitch">A real-time, community-verified map of shelters, food banks, and mental health resources for people in crisis — built on the insight that static directories fail the moment a shelter fills up. Includes an org dashboard for nonprofits, offline mode for prepaid phones, and AI-powered resource matching. Launching in Los Angeles with a phased national rollout plan.</p>
-<div class="chips">
-<span class="chip">React Native + React</span>
-<span class="chip">PostgreSQL / PostGIS</span>
-<span class="chip">Claude API matching</span>
-<span class="chip">Firebase real-time</span>
-<span class="chip">Product strategy</span>
-</div>
-</div>
-</div>
+  <article class="product">
+    <div>
+      <h3 class="p-name">HopeMap</h3>
+      <a class="p-live" href="https://hopemap.live" target="_blank" rel="noopener">hopemap.live</a>
+    </div>
+    <div>
+      <p class="p-pitch">A real-time, community-verified map of shelters, food banks and mental health resources for people in crisis, built because static directories fail the moment a shelter fills up. It has an org dashboard for nonprofits, offline mode for prepaid phones and AI resource matching. Launching in Los Angeles, with a phased national rollout.</p>
+      <p class="p-built"><b>Built:</b> React Native and React, PostgreSQL with PostGIS, Claude API matching, Firebase real-time, product strategy</p>
+    </div>
+  </article>
 
-<div class="project">
-<div class="p-meta">
-<span class="live-pill"><span class="dot"></span>LIVE</span>
-<span class="p-domain"><a href="https://thelacityguide.com" target="_blank" rel="noopener">thelacityguide.com</a></span>
-</div>
-<div class="p-body">
-<h3>The LA City Guide</h3>
-<p class="p-pitch">An independent visitor guide to Los Angeles for the 2028 Olympics — neighborhoods, venue transport, honest dining picks, and an itinerary builder, written for a global audience with country-specific entry and culture notes. Backed by a full advertising rate card, from single listings to six-figure enterprise sponsorships, plus a paid concierge trip-planning service.</p>
-<div class="chips">
-<span class="chip">Content strategy</span>
-<span class="chip">Itinerary builder</span>
-<span class="chip">Monetization design</span>
-<span class="chip">International UX</span>
-</div>
-</div>
-</div>
-
-</div>
+  <article class="product">
+    <div>
+      <h3 class="p-name">The LA City Guide</h3>
+      <a class="p-live" href="https://thelacityguide.com" target="_blank" rel="noopener">thelacityguide.com</a>
+    </div>
+    <div>
+      <p class="p-pitch">An independent visitor guide to Los Angeles for the 2028 Olympics: neighborhoods, venue transport, honest dining picks and an itinerary builder, with country-specific entry and culture notes for a global audience. Backed by an advertising rate card from single listings to six-figure sponsorships, plus a paid concierge trip-planning service.</p>
+      <p class="p-built"><b>Built:</b> content strategy, itinerary builder, monetization design, international UX</p>
+    </div>
+  </article>
 </section>
 
-<section class="section">
-<div class="section-head">
-<div>
-<h2>What building five of these teaches you</h2>
-<p>The through-line isn't the industry. It's the muscle: find a real problem, ship something that works, and make the money side hold together.</p>
-</div>
-</div>
-<div class="cap-grid">
-<div class="cap">
-<h4>Product &amp; strategy</h4>
-<ul>
-<li>Scoping an idea down to something one person can build and ship</li>
-<li>Writing positioning and copy that a stranger understands in five seconds</li>
-<li>Phased go-to-market plans, from single city to national rollout</li>
-</ul>
-</div>
-<div class="cap">
-<h4>Engineering</h4>
-<ul>
-<li>Full-stack builds across web and React Native</li>
-<li>Geospatial data with PostgreSQL / PostGIS</li>
-<li>AI integration for matching, translation, and itinerary generation</li>
-</ul>
-</div>
-<div class="cap">
-<h4>Monetization</h4>
-<ul>
-<li>Stripe subscriptions and one-time checkout flows</li>
-<li>Affiliate revenue across hotels, flights, tours, and tickets</li>
-<li>Tiered sponsorship and advertising rate cards, built from scratch</li>
-</ul>
-</div>
-<div class="cap">
-<h4>Craft</h4>
-<ul>
-<li>Multilingual, accessible interfaces for global audiences</li>
-<li>Real-time features: live status, alerts, offline mode</li>
-<li>SEO and metadata done properly, not as an afterthought</li>
-</ul>
-</div>
-</div>
+<section id="how" aria-labelledby="how-h">
+  <h2 id="how-h">What five launches teach you</h2>
+  <p class="intro">The through-line isn't the industry. It's the habit: find a real problem, ship something that works, and make the money side hold together.</p>
+  <div class="how">
+    <div>
+      <h3>Product and strategy</h3>
+      <ul>
+        <li>Scoping an idea down to something one person can build and ship</li>
+        <li>Positioning and copy a stranger understands in five seconds</li>
+        <li>Phased go-to-market, from one city to a national rollout</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Engineering</h3>
+      <ul>
+        <li>Full-stack builds across web and React Native</li>
+        <li>Geospatial data with PostgreSQL and PostGIS</li>
+        <li>AI for matching, translation and itinerary generation</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Monetization</h3>
+      <ul>
+        <li>Stripe subscriptions and one-time checkout</li>
+        <li>Affiliate revenue across hotels, flights, tours and tickets</li>
+        <li>Sponsorship and advertising rate cards, built from scratch</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Craft</h3>
+      <ul>
+        <li>Multilingual, accessible interfaces for global audiences</li>
+        <li>Real-time features: live status, alerts, offline mode</li>
+        <li>SEO and metadata done properly, not as an afterthought</li>
+      </ul>
+    </div>
+  </div>
 </section>
+
+<section class="contact" id="contact" aria-labelledby="contact-h">
+  <h2 id="contact-h">Need an idea turned into something real, fast?</h2>
+  <p class="intro" style="margin-bottom:0">I'm open to product, full-stack and founding engineer roles, and to freelance builds for teams who need to ship.</p>
+  <a class="mail" href="mailto:info@chocoberryexclusive.com">info@<wbr>chocoberryexclusive.com</a>
+</section>
+</main>
 
 <footer>
-<h2>Looking for someone who ships, not someone who plans to?</h2>
-<p>I'm open to product, full-stack, and founding engineer roles, and to freelance builds for teams who need an idea turned into something real fast.</p>
-<div class="cta-row">
-<a class="btn btn-primary" href="mailto:Harrychocoberry@gmail.com">✉ Harrychocoberry@gmail.com</a>
-</div>
-<div class="foot-bottom">
-<span>Harry E · Chocoberry</span>
-<span>chocoberryexclusive.com</span>
-</div>
+  <span>Harry E, building as Chocoberry</span>
+  <span>chocoberryexclusive.com</span>
 </footer>
-
 </div>
 
+<script>
+(function(){
+  var examples = [
+    { tab:"Council agenda", product:"Municipal Watch", url:"https://municipalwatch.org",
+      src:"City council agenda, item 7(b)",
+      before:"Consideration of a Conditional Use Permit (CUP 2026-0114) pursuant to LAMC §12.24-W.1 for the on-site sale of a full line of alcoholic beverages in conjunction with a 4,200 sq. ft. restaurant in the C2-1VL zone, with hours of operation 11:00 a.m. to 2:00 a.m. daily.",
+      after:"A 4,200 sq ft restaurant on your block wants to serve a full bar until 2 a.m. The council votes Tuesday, and you can comment until then." },
+    { tab:"Radiology report", product:"ClearScan", url:"https://clearscan.org",
+      src:"MRI lumbar spine, impression",
+      before:"L4-L5: Mild disc desiccation with a small broad-based posterior disc bulge resulting in mild bilateral neural foraminal narrowing. No significant central canal stenosis. No acute osseous abnormality.",
+      after:"One disc in your lower back is a little dried out and bulging slightly, which is common with age. It's pressing lightly near the nerves. Nothing is broken, and there's no sign of anything urgent." },
+    { tab:"Shelter listing", product:"HopeMap", url:"https://hopemap.live",
+      src:"County directory, last updated 14 months ago",
+      before:"Eastside Family Shelter. Emergency housing for families. Call for availability. Hours vary. Intake requirements apply. Services may be subject to change without notice.",
+      after:"Eastside Family Shelter has 3 family beds open right now, confirmed 20 minutes ago. Walk-in intake until 9 p.m., no ID needed. 12 minutes by bus from you." }
+  ];
+  var tr = document.getElementById('tr');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var i = 0, plain = false;
+
+  tr.innerHTML =
+    '<div class="tr-tabs" role="tablist" aria-label="Examples"></div>' +
+    '<div class="tr-sheet" role="tabpanel">' +
+      '<p class="tr-src"><span id="tr-src"></span><span id="tr-state"></span></p>' +
+      '<p class="tr-text" id="tr-text" aria-live="polite"></p>' +
+      '<div class="tr-foot"><button class="btn btn-berry" id="tr-btn" type="button"></button>' +
+      '<span class="tr-by" id="tr-by"></span></div>' +
+    '</div>';
+
+  var tabs = tr.querySelector('.tr-tabs'), text = document.getElementById('tr-text'),
+      btn = document.getElementById('tr-btn'), src = document.getElementById('tr-src'),
+      state = document.getElementById('tr-state'), by = document.getElementById('tr-by');
+
+  examples.forEach(function(ex, n){
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('role','tab'); b.textContent = ex.tab;
+    b.addEventListener('click', function(){ i = n; plain = false; render(false); });
+    tabs.appendChild(b);
+  });
+
+  function words(str){
+    text.textContent = '';
+    str.split(' ').forEach(function(w, n){
+      var s = document.createElement('span');
+      s.className = 'w'; s.textContent = w;
+      s.style.animationDelay = (n * 28) + 'ms';
+      text.appendChild(s); text.appendChild(document.createTextNode(' '));
+    });
+  }
+  function render(animate){
+    var ex = examples[i];
+    Array.prototype.forEach.call(tabs.children, function(b, n){ b.setAttribute('aria-selected', n === i ? 'true' : 'false'); });
+    src.textContent = plain ? 'What ' + ex.product + ' shows you' : ex.src;
+    state.textContent = plain ? 'Plain' : 'Original';
+    text.classList.toggle('is-plain', plain);
+    if (animate && !reduce) words(plain ? ex.after : ex.before);
+    else text.textContent = plain ? ex.after : ex.before;
+    btn.textContent = plain ? 'Show the original' : 'Make it plain';
+    by.innerHTML = 'Example of <a href="' + ex.url + '" target="_blank" rel="noopener">' + ex.product + '</a>';
+  }
+  btn.addEventListener('click', function(){ plain = !plain; render(true); });
+  render(false);
+})();
+</script>
 </body>
 </html>
