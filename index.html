@@ -4,65 +4,82 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chocoberry — Products That Make Sense</title>
-<meta name="description" content="Chocoberry builds and ships complete products: Municipal Watch, ClearScan, FIFAMap, HopeMap and The LA City Guide. Available for product builds and partnerships.">
+<meta name="description" content="Chocoberry designs, builds and launches complete products: AI that explains dense documents, real-time maps, and revenue built in. See Municipal Watch, ClearScan, FIFAMap, HopeMap and The LA City Guide.">
 <meta name="theme-color" content="#2A1B17">
 <link rel="canonical" href="https://chocoberryexclusive.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chocoberryexclusive.com/">
+<meta property="og:site_name" content="Chocoberry">
 <meta property="og:title" content="Chocoberry — We turn confusing things into products people can use">
-<meta property="og:description" content="A selection of live products across civic tech, healthtech, crisis response and travel, each built end to end.">
+<meta property="og:description" content="A product studio that takes ideas from first call to launched, earning product. See selected work across civic tech, healthtech, crisis response and travel.">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A1B17'/%3E%3Cpath d='M32 54c-11 0-18-9-18-20 0-8 6-14 18-14s18 6 18 14c0 11-7 20-18 20z' fill='%23E0457B'/%3E%3Cpath d='M32 20c-2-6-7-9-12-9 3 4 7 7 12 9zm0 0c2-6 7-9 12-9-3 4-7 7-12 9z' fill='%2397C27A'/%3E%3Cg fill='%23F7C9D6'%3E%3Ccircle cx='25' cy='31' r='1.6'/%3E%3Ccircle cx='38' cy='30' r='1.6'/%3E%3Ccircle cx='31' cy='38' r='1.6'/%3E%3Ccircle cx='24' cy='42' r='1.6'/%3E%3Ccircle cx='39' cy='41' r='1.6'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Chocoberry","url":"https://chocoberryexclusive.com/","email":"mailto:info@chocoberryexclusive.com"}
+{"@context":"https://schema.org","@type":"Organization","name":"Chocoberry","url":"https://chocoberryexclusive.com/","email":"mailto:info@chocoberryexclusive.com","description":"Product studio that designs, builds and launches complete products.","knowsAbout":["Product design","Full-stack development","AI features","Geospatial data","Stripe payments","Internationalization"]}
 </script>
 <style>
 :root{
   --cocoa:#2A1B17;      /* page */
   --ganache:#38241F;    /* raised surfaces */
+  --truffle:#432C26;    /* raised, hover */
   --nib:#4A3029;        /* lines */
   --milk:#F6E7DA;       /* text */
   --dust:#C3A99C;       /* secondary text */
   --berry:#E0457B;      /* action */
   --berry-hi:#F06A97;
   --berry-pale:#F7C9D6;
-  --leaf:#97C27A;       /* live / ok */
+  --leaf:#97C27A;       /* online */
+  --honey:#E8B25C;      /* in progress */
   --display:'Bricolage Grotesque',system-ui,sans-serif;
   --text:'Source Serif 4',Georgia,serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;background:var(--cocoa)}
+html{scroll-behavior:smooth;background:var(--cocoa);scroll-padding-top:84px}
 body{margin:0;background:var(--cocoa);color:var(--milk);font-family:var(--text);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 ::selection{background:var(--berry);color:#fff}
-:focus-visible{outline:3px solid var(--berry-pale);outline-offset:3px;border-radius:4px}
+:focus-visible{outline:3px solid var(--berry-pale);outline-offset:3px;border-radius:6px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-.skip{position:absolute;left:-999px;top:8px;background:var(--berry);color:#fff;padding:8px 14px;border-radius:8px;font-family:var(--display);z-index:10}
+.skip{position:absolute;left:-999px;top:8px;background:var(--berry);color:#fff;padding:8px 14px;border-radius:8px;font-family:var(--display);z-index:30}
 .skip:focus{left:8px}
+.ui{font-family:var(--display)}
 
 /* nav */
-.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;font-family:var(--display)}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-size:18px;line-height:1.2}
-.brand svg{width:34px;height:34px}
-.brand small{display:block;font-weight:400;font-size:13px;color:var(--dust)}
-.nav nav{display:flex;gap:22px;font-size:15px}
-.nav nav a{text-decoration:none;color:var(--dust)}
-.nav nav a:hover{color:var(--milk)}
+.bar{position:sticky;top:0;z-index:20;background:rgba(42,27,23,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.bar.is-scrolled{border-bottom-color:var(--nib)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0;font-family:var(--display)}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:700;font-size:19px}
+.brand svg{width:32px;height:32px;flex:none}
+.nav nav{display:flex;align-items:center;gap:24px;font-size:15px}
+.nav nav a:not(.btn){text-decoration:none;color:var(--dust)}
+.nav nav a:not(.btn):hover{color:var(--milk)}
+.nav .btn{padding:10px 16px;font-size:15px}
 
-/* hero */
-.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;align-items:center;padding:64px 0 96px}
-h1{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:clamp(44px,6.2vw,80px);line-height:.98;letter-spacing:-.02em;margin:0 0 26px}
-.lede{color:var(--dust);font-size:19px;max-width:30em;margin:0 0 34px}
-.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:16px;text-decoration:none;padding:14px 22px;border-radius:999px;border:0;cursor:pointer;transition:background .15s,transform .15s}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:16px;text-decoration:none;padding:14px 22px;border-radius:999px;border:0;cursor:pointer;transition:background .15s,transform .15s,box-shadow .15s;white-space:nowrap}
 .btn-berry{background:var(--berry);color:#fff}
 .btn-berry:hover{background:var(--berry-hi)}
-.btn-berry:active{transform:scale(.97)}
-.btn-line{color:var(--milk);box-shadow:inset 0 0 0 1.5px var(--nib)}
+.btn:active{transform:scale(.97)}
+.btn-line{color:var(--milk);background:none;box-shadow:inset 0 0 0 1.5px var(--nib)}
 .btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--dust)}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
+
+/* status dots */
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dust);flex:none}
+.dot[data-site]{background:var(--leaf)}
+.dot.ok{background:var(--leaf);box-shadow:0 0 0 4px rgba(151,194,122,.18)}
+.dot.wip{background:var(--honey);box-shadow:0 0 0 4px rgba(232,178,92,.18)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;align-items:center;padding:56px 0 88px}
+.avail{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-size:14px;color:var(--dust);margin:0 0 22px}
+h1{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:clamp(44px,6.2vw,80px);line-height:.98;letter-spacing:-.02em;margin:0 0 26px}
+.lede{color:var(--dust);font-size:19px;max-width:30em;margin:0 0 34px}
+.proof{display:flex;align-items:center;gap:10px;margin:26px 0 0;font-family:var(--display);font-size:14px;color:var(--dust);min-height:22px}
+.proof[hidden]{display:none}
 
 /* translator */
 .tr{background:var(--ganache);border-radius:22px;padding:10px}
@@ -83,77 +100,141 @@ h1{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:clamp(4
 .nojs-pair p{margin:0 0 12px}
 
 /* sections */
-section{padding:88px 0;border-top:1px solid var(--nib)}
-h2{font-family:var(--display);font-weight:700;font-stretch:85%;font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-.015em;margin:0 0 14px}
+section{padding:96px 0;border-top:1px solid var(--nib)}
+h2{font-family:var(--display);font-weight:700;font-stretch:85%;font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-.015em;margin:0 0 14px;max-width:18em}
 .intro{color:var(--dust);max-width:34em;margin:0 0 52px}
+h3{font-family:var(--display);font-weight:700;line-height:1.15}
 
-/* products */
-.product{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:40px;padding:40px 0;border-top:1px solid var(--nib)}
-.intro + .product{border-top:0;padding-top:0}
-.p-name{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.1;margin:0 0 10px}
-.p-live{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:15px;text-decoration:none;color:var(--dust)}
-.p-live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--leaf);box-shadow:0 0 0 4px rgba(151,194,122,.18)}
-.p-live:hover{color:var(--berry-pale)}
-.p-pitch{margin:0 0 18px;max-width:36em}
-.p-built{font-family:var(--display);font-size:15px;color:var(--dust);margin:0}
-.p-built b{color:var(--milk);font-weight:600}
+/* services */
+.svc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.svc article{background:var(--ganache);border-radius:20px;padding:30px 30px 26px;display:flex;flex-direction:column}
+.svc h3{font-size:24px;margin:0 0 10px}
+.svc p{margin:0 0 20px;color:var(--dust);flex:1}
+.seen{font-family:var(--display);font-size:14px;color:var(--dust);margin:0}
+.seen a{color:var(--berry-pale);text-decoration-color:rgba(247,201,214,.35);text-underline-offset:3px}
+.seen a:hover{text-decoration-color:var(--berry-pale)}
 
-/* how */
-.how{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 64px}
-.how h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 10px;color:var(--berry-pale)}
-.how ul{margin:0;padding-left:1.1em;color:var(--dust)}
-.how li{margin-bottom:6px}
-.how li::marker{color:var(--berry)}
+/* work */
+.case{border-top:1px solid var(--nib)}
+.case:last-child{border-bottom:1px solid var(--nib)}
+.case summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr) 112px;gap:32px;align-items:start;padding:34px 0}
+.case summary::-webkit-details-marker{display:none}
+.c-name{font-size:30px;margin:0 0 10px}
+.c-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-family:var(--display);font-size:14px;color:var(--dust)}
+.c-meta span{display:inline-flex;align-items:center;gap:8px}
+.c-hook{margin:0;max-width:34em;font-size:19px}
+.c-toggle{font-family:var(--display);font-size:14px;color:var(--berry-pale);display:flex;justify-content:flex-end;align-items:center;gap:8px;white-space:nowrap;padding-top:6px}
+.c-toggle svg{width:14px;height:14px;transition:transform .25s}
+.case[open] .c-toggle svg{transform:rotate(45deg)}
+.case summary:hover .c-name{color:var(--berry-pale)}
+.c-body{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr) 112px;gap:32px;padding:0 0 44px}
+.c-facts{margin:0;padding:0;list-style:none;font-family:var(--display)}
+.c-facts li{padding:12px 0;border-top:1px solid var(--nib);display:flex;flex-direction:column}
+.c-facts b{font-size:22px;font-weight:700;color:var(--milk);line-height:1.2}
+.c-facts span{font-size:14px;color:var(--dust)}
+.c-story h4{font-family:var(--display);font-size:16px;font-weight:700;color:var(--berry-pale);margin:0 0 6px}
+.c-story p,.c-story ul{margin:0 0 24px;max-width:36em;color:var(--dust)}
+.c-story ul{padding-left:1.1em}
+.c-story li{margin-bottom:4px}
+.c-story li::marker{color:var(--berry)}
+.c-story .btn{margin-top:4px}
+.case[open] .c-body{animation:open .35s ease}
+@keyframes open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0 0 72px;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;background:var(--ganache);border-radius:20px;padding:26px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--berry);color:#fff;font-family:var(--display);font-weight:700;font-size:16px;margin-bottom:18px}
+.steps h3{font-size:21px;margin:0 0 8px}
+.steps p{margin:0;color:var(--dust);font-size:16px}
+.beliefs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 64px}
+.beliefs h3{font-size:clamp(26px,3vw,34px);font-stretch:85%;margin:0 0 8px;color:var(--berry-pale)}
+.beliefs p{margin:0;color:var(--dust);max-width:28em}
+.stack{margin:64px 0 0;font-family:var(--display);font-size:15px;color:var(--dust);max-width:52em}
+.stack b{color:var(--milk);font-weight:600}
+
+/* faq */
+.faq{max-width:780px;margin-top:40px}
+.faq details{border-top:1px solid var(--nib)}
+.faq details:last-child{border-bottom:1px solid var(--nib)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;padding:22px 0;font-family:var(--display);font-weight:600;font-size:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{width:16px;height:16px;flex:none;margin-top:6px;transition:transform .25s;color:var(--berry-pale)}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq summary:hover{color:var(--berry-pale)}
+.faq details p{margin:0 0 24px;color:var(--dust);max-width:40em}
 
 /* contact */
-.contact h2{max-width:14em}
-.mail{display:inline-block;font-family:var(--display);font-weight:800;font-stretch:78%;font-size:clamp(28px,6.4vw,82px);line-height:1.05;letter-spacing:-.025em;text-decoration:none;color:var(--berry);margin:22px 0 0;overflow-wrap:normal;background:linear-gradient(var(--berry),var(--berry)) 0 100%/0 4px no-repeat;transition:background-size .3s}
+.contact{text-align:left}
+.mail{display:inline-block;font-family:var(--display);font-weight:800;font-stretch:78%;font-size:clamp(28px,6vw,76px);line-height:1.05;letter-spacing:-.025em;text-decoration:none;color:var(--berry);margin:22px 0 28px;background:linear-gradient(var(--berry),var(--berry)) 0 100%/0 4px no-repeat;transition:background-size .3s}
 .mail:hover{background-size:100% 4px}
+.copied{font-family:var(--display);font-size:14px;color:var(--leaf);margin-left:4px}
 footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:28px 0 40px;border-top:1px solid var(--nib);font-family:var(--display);font-size:14px;color:var(--dust)}
+footer a{text-decoration:none}
+footer a:hover{color:var(--milk)}
 
-@media (max-width:860px){
-  .hero{grid-template-columns:1fr;gap:40px;padding-top:32px}
-  .product{grid-template-columns:1fr;gap:12px}
-  .how{grid-template-columns:1fr;gap:32px}
+@media (max-width:960px){
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media (max-width:520px){
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:40px;padding-top:28px}
+  .svc,.beliefs{grid-template-columns:1fr}
+  .case summary,.c-body{grid-template-columns:1fr;gap:12px}
+  .case summary{position:relative;padding-right:0}
+  .c-toggle{padding-top:4px;justify-content:flex-start}
+  .c-body{gap:8px}
+  .nav nav a.hide-md{display:none}
+}
+@media (max-width:560px){
   body{font-size:17px}
+  .nav nav{gap:16px}
   .nav nav a.hide-sm{display:none}
   .tr-sheet{padding:20px;min-height:340px}
-  section{padding:64px 0}
+  section{padding:68px 0}
+  .steps{grid-template-columns:1fr}
+  .svc article{padding:24px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .tr-text .w{animation:none;opacity:1;transform:none}
-  .mail{transition:none}
+  .case[open] .c-body{animation:none}
+  .mail,.c-toggle svg,.faq summary svg,.bar{transition:none}
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#work">Skip to the work</a>
 
-<div class="wrap">
-<header class="nav">
-  <a class="brand" href="/" aria-label="Chocoberry, home">
-    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 56c-12 0-19-10-19-22 0-9 7-15 19-15s19 6 19 15c0 12-7 22-19 22z" fill="#E0457B"/><path d="M32 19c-2-7-8-10-13-10 3 5 8 8 13 10zm0 0c2-7 8-10 13-10-3 5-8 8-13 10z" fill="#97C27A"/><g fill="#F7C9D6"><circle cx="24" cy="31" r="1.7"/><circle cx="39" cy="30" r="1.7"/><circle cx="31" cy="39" r="1.7"/><circle cx="23" cy="44" r="1.7"/><circle cx="40" cy="43" r="1.7"/></g></svg>
-    <span>Chocoberry</span>
-  </a>
-  <nav aria-label="Main">
-    <a href="#work">Work</a>
-    <a class="hide-sm" href="#how">How we work</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+<div class="bar" id="bar">
+  <div class="wrap">
+    <header class="nav">
+      <a class="brand" href="/" aria-label="Chocoberry, home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 56c-12 0-19-10-19-22 0-9 7-15 19-15s19 6 19 15c0 12-7 22-19 22z" fill="#E0457B"/><path d="M32 19c-2-7-8-10-13-10 3 5 8 8 13 10zm0 0c2-7 8-10 13-10-3 5-8 8-13 10z" fill="#97C27A"/><g fill="#F7C9D6"><circle cx="24" cy="31" r="1.7"/><circle cx="39" cy="30" r="1.7"/><circle cx="31" cy="39" r="1.7"/><circle cx="23" cy="44" r="1.7"/><circle cx="40" cy="43" r="1.7"/></g></svg>
+        <span>Chocoberry</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="#work">Work</a>
+        <a class="hide-md" href="#services">Services</a>
+        <a class="hide-sm" href="#how">How we work</a>
+        <a class="hide-md" href="#faq">FAQ</a>
+        <a class="btn btn-berry" href="#contact">Start a project</a>
+      </nav>
+    </header>
+  </div>
+</div>
 
+<div class="wrap">
 <main>
 <div class="hero">
   <div>
+    <p class="avail"><span class="dot ok" aria-hidden="true"></span>Taking on new projects</p>
     <h1>We turn confusing things into products people can use.</h1>
-    <p class="lede">Council agendas, radiology reports, shelter listings, a World Cup across three countries. We build the product that makes them make sense, end to end: payments, data, search and the people who show up.</p>
+    <p class="lede">Council agendas, radiology reports, shelter listings, World Cup travel. We design, build and launch the whole product, from the first call to the payments, the data and the people who show up.</p>
     <div class="actions">
-      <a class="btn btn-berry" href="mailto:info@chocoberryexclusive.com">Email us</a>
+      <a class="btn btn-berry" href="mailto:info@chocoberryexclusive.com?subject=New%20project%20for%20Chocoberry">Start a project</a>
       <a class="btn btn-line" href="#work">See selected work</a>
     </div>
+    <p class="proof" id="proof" hidden aria-live="polite"><span class="dot ok" aria-hidden="true"></span><span id="proof-text"></span></p>
   </div>
 
   <div class="tr" id="tr" aria-label="Try it: what our products do">
@@ -166,120 +247,255 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
   </div>
 </div>
 
+<section id="services" aria-labelledby="services-h">
+  <h2 id="services-h">What we can build for you</h2>
+  <p class="intro">Bring us a problem, a half-built product or a rough idea. Each of these is something we've already shipped, so you can go and try it.</p>
+  <div class="svc">
+    <article>
+      <h3>A complete product, idea to launch</h3>
+      <p>Scoping, design, web and mobile build, payments, launch and SEO. One team owns the whole thing, so nothing falls between a designer, a developer and a marketer.</p>
+      <p class="seen">Seen in <a href="#c-municipal">Municipal Watch</a>, <a href="#c-fifamap">FIFAMap</a>, <a href="#c-laguide">The LA City Guide</a></p>
+    </article>
+    <article>
+      <h3>AI that explains, matches and plans</h3>
+      <p>Turn dense documents into plain answers, match people to the right resource from a sentence, or build a day-by-day plan in their own language. Useful, not a chatbot bolted on.</p>
+      <p class="seen">Seen in <a href="#c-clearscan">ClearScan</a>, <a href="#c-hopemap">HopeMap</a>, <a href="#c-fifamap">FIFAMap</a></p>
+    </article>
+    <article>
+      <h3>Maps, live data and alerts</h3>
+      <p>Geospatial search, open-or-closed status that updates in real time, keyword alerts by SMS and email, and offline mode for people on limited data.</p>
+      <p class="seen">Seen in <a href="#c-hopemap">HopeMap</a>, <a href="#c-municipal">Municipal Watch</a></p>
+    </article>
+    <article>
+      <h3>Revenue designed in from day one</h3>
+      <p>Stripe subscriptions and one-time checkout, freemium paywalls, affiliate bookings and full advertising rate cards. We plan how a product earns before we build it.</p>
+      <p class="seen">Seen in <a href="#c-municipal">Municipal Watch</a>, <a href="#c-fifamap">FIFAMap</a>, <a href="#c-laguide">The LA City Guide</a></p>
+    </article>
+  </div>
+</section>
+
 <section id="work" aria-labelledby="work-h">
   <h2 id="work-h">A few of our products</h2>
   <p class="intro">We've built and shipped far more than you see here. Most run on public sites we don't list, and some are client work covered by NDA. These five are here for you to explore, each one solving a specific, unglamorous problem for a specific person.</p>
 
-  <article class="product">
-    <div>
-      <h3 class="p-name">Municipal Watch</h3>
-      <a class="p-live" href="https://municipalwatch.org" target="_blank" rel="noopener">municipalwatch.org</a>
+  <details class="case" id="c-municipal">
+    <summary>
+      <div>
+        <h3 class="c-name">Municipal Watch</h3>
+        <div class="c-meta"><span><span class="dot" data-site="https://municipalwatch.org" aria-hidden="true"></span>Live</span><span>Civic tech</span></div>
+      </div>
+      <p class="c-hook">City hall decisions hit local businesses without warning. Municipal Watch reads the agendas so owners don't have to.</p>
+      <span class="c-toggle">Case study <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+    </summary>
+    <div class="c-body">
+      <ul class="c-facts">
+        <li><b>Any city</b><span>in any country</span></li>
+        <li><b>$49 and $99</b><span>monthly Starter and Pro plans</span></li>
+        <li><b>2 weeks</b><span>free pilot, no card needed</span></li>
+      </ul>
+      <div class="c-story">
+        <h4>The problem</h4>
+        <p>Council meetings, planning agendas and zoning permits are public, but buried in jargon across hundreds of pages. Owners, landlords and contractors usually hear about a decision after it's made.</p>
+        <h4>What we built</h4>
+        <ul>
+          <li>Monitoring of council meetings, planning agendas and permit activity</li>
+          <li>Plain-English weekly briefs written for the business, not the clerk</li>
+          <li>Real-time SMS and email alerts with custom keyword tracking</li>
+          <li>Sample briefs for nine Southern California cities, so buyers see real value first</li>
+        </ul>
+        <h4>How it earns</h4>
+        <p>Tiered Stripe subscriptions, with a free two-week pilot that turns curious visitors into paying members.</p>
+        <a class="btn btn-line" href="https://municipalwatch.org" target="_blank" rel="noopener">Visit municipalwatch.org</a>
+      </div>
+      <span></span>
     </div>
-    <div>
-      <p class="p-pitch">Tracks every city council meeting, planning commission agenda and zoning permit in a local business owner's city, then turns the jargon into a plain-English weekly brief. Real-time alerts flag anything that could hit their street or property value.</p>
-      <p class="p-built"><b>Built:</b> Stripe subscriptions with tiered pricing, civic data monitoring, plain-language automation</p>
-    </div>
-  </article>
+  </details>
 
-  <article class="product">
-    <div>
-      <h3 class="p-name">ClearScan</h3>
-      <a class="p-live" href="https://clearscan.org" target="_blank" rel="noopener">clearscan.org</a>
+  <details class="case" id="c-clearscan">
+    <summary>
+      <div>
+        <h3 class="c-name">ClearScan</h3>
+        <div class="c-meta"><span><span class="dot" data-site="https://clearscan.org" aria-hidden="true"></span>Live</span><span>Healthtech</span></div>
+      </div>
+      <p class="c-hook">Patients often read their scan results before a doctor explains them. ClearScan explains them first, in seconds.</p>
+      <span class="c-toggle">Case study <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+    </summary>
+    <div class="c-body">
+      <ul class="c-facts">
+        <li><b>1 step</b><span>paste a report, read the answer</span></li>
+        <li><b>Seconds</b><span>from jargon to plain language</span></li>
+      </ul>
+      <div class="c-story">
+        <h4>The problem</h4>
+        <p>Radiology reports are written doctor to doctor. A patient opens their portal, sees "mild bilateral neural foraminal narrowing" and spends the weekend worrying.</p>
+        <h4>What we built</h4>
+        <p>A deliberately small product for an anxious moment: one field, one action, and a calm explanation that tells the patient what the findings mean and what to ask their doctor.</p>
+        <a class="btn btn-line" href="https://clearscan.org" target="_blank" rel="noopener">Visit clearscan.org</a>
+      </div>
+      <span></span>
     </div>
-    <div>
-      <p class="p-pitch">Radiology reports are written for doctors, not patients. ClearScan translates the findings into language a patient can understand in seconds, a small product aimed squarely at a moment of real anxiety.</p>
-      <p class="p-built"><b>Built:</b> patient-facing healthtech UX, plain-language translation</p>
-    </div>
-  </article>
+  </details>
 
-  <article class="product">
-    <div>
-      <h3 class="p-name">FIFAMap</h3>
-      <a class="p-live" href="https://fifamap.org" target="_blank" rel="noopener">fifamap.org</a>
+  <details class="case" id="c-fifamap">
+    <summary>
+      <div>
+        <h3 class="c-name">FIFAMap</h3>
+        <div class="c-meta"><span><span class="dot" data-site="https://fifamap.org" aria-hidden="true"></span>Live</span><span>Sports travel</span></div>
+      </div>
+      <p class="c-hook">A trip planner for World Cup events, covering all host cities now and in the future, with an AI itinerary builder in eight languages.</p>
+      <span class="c-toggle">Case study <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+    </summary>
+    <div class="c-body">
+      <ul class="c-facts">
+        <li><b>8 languages</b><span>from English to Arabic and Japanese</span></li>
+        <li><b>Every tournament</b><span>men's, women's, youth and club</span></li>
+        <li><b>3 revenue streams</b><span>paid plans, affiliates, sponsors</span></li>
+      </ul>
+      <div class="c-story">
+        <h4>The problem</h4>
+        <p>Fans following a World Cup juggle match schedules, tickets, hotels, transport and nightlife across many host cities, often in a language that isn't their own.</p>
+        <h4>What we built</h4>
+        <ul>
+          <li>A tournament hub and archive for every FIFA World Cup, past, present and future</li>
+          <li>Host city guides, stadium schedules, watch parties and nightlife</li>
+          <li>An AI planner that builds day-by-day itineraries in any of eight languages</li>
+        </ul>
+        <h4>How it earns</h4>
+        <p>A freemium planner (free messages, then a $2.99 PDF, a $4.99 single trip or a $9.99 monthly Tournament Pass), plus affiliate bookings for hotels, flights, tickets and tours, and a sponsorship program for venues and brands.</p>
+        <a class="btn btn-line" href="https://fifamap.org" target="_blank" rel="noopener">Visit fifamap.org</a>
+      </div>
+      <span></span>
     </div>
-    <div>
-      <p class="p-pitch">A trip planner for World Cup events, covering all host cities now and in the future: match schedules, hotels, transport and nightlife, with an AI itinerary builder in eight languages. It earns through affiliate bookings, a paid planning tier and a sponsorship program for venues and brands.</p>
-      <p class="p-built"><b>Built:</b> AI itinerary planning, eight-language i18n, affiliate revenue, sponsorship tiers, Stripe paywall</p>
-    </div>
-  </article>
+  </details>
 
-  <article class="product">
-    <div>
-      <h3 class="p-name">HopeMap</h3>
-      <a class="p-live" href="https://hopemap.live" target="_blank" rel="noopener">hopemap.live</a>
+  <details class="case" id="c-hopemap">
+    <summary>
+      <div>
+        <h3 class="c-name">HopeMap</h3>
+        <div class="c-meta"><span><span class="dot wip" aria-hidden="true"></span>In pilot planning</span><span>Crisis response</span></div>
+      </div>
+      <p class="c-hook">A live map of shelter, food and mental health help that's open right now, starting in Greater Los Angeles.</p>
+      <span class="c-toggle">Case study <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+    </summary>
+    <div class="c-body">
+      <ul class="c-facts">
+        <li><b>4 languages</b><span>at launch, with 50 more planned</span></li>
+        <li><b>Offline</b><span>for prepaid phones and limited data</span></li>
+        <li><b>3 phases</b><span>LA pilots 2027, SoCal 2028, national 2029+</span></li>
+      </ul>
+      <div class="c-story">
+        <h4>The problem</h4>
+        <p>Static directories go stale the moment a shelter fills up. People in crisis end up calling around, often with little battery and less data.</p>
+        <h4>What we built</h4>
+        <ul>
+          <li>A community map showing open, limited or closed status, bed counts and wait times</li>
+          <li>AI matching: describe your situation in plain words, get nearby open help</li>
+          <li>A trust system that gives verified reporters more weight</li>
+          <li>A free dashboard for nonprofits, plus one-tap 911, 988 and 211</li>
+        </ul>
+        <h4>Built with</h4>
+        <p>React Native (Expo) and React, PostgreSQL with PostGIS, Claude API, Firebase, Redis, AWS and Cloudflare.</p>
+        <a class="btn btn-line" href="https://hopemap.live" target="_blank" rel="noopener">Visit hopemap.live</a>
+      </div>
+      <span></span>
     </div>
-    <div>
-      <p class="p-pitch">A real-time, community-verified map of shelters, food banks and mental health resources for people in crisis, built because static directories fail the moment a shelter fills up. It has an org dashboard for nonprofits, offline mode for prepaid phones and AI resource matching. Launching in Los Angeles, with a phased national rollout.</p>
-      <p class="p-built"><b>Built:</b> React Native and React, PostgreSQL with PostGIS, Claude API matching, Firebase real-time, product strategy</p>
-    </div>
-  </article>
+  </details>
 
-  <article class="product">
-    <div>
-      <h3 class="p-name">The LA City Guide</h3>
-      <a class="p-live" href="https://thelacityguide.com" target="_blank" rel="noopener">thelacityguide.com</a>
+  <details class="case" id="c-laguide">
+    <summary>
+      <div>
+        <h3 class="c-name">The LA City Guide</h3>
+        <div class="c-meta"><span><span class="dot" data-site="https://thelacityguide.com" aria-hidden="true"></span>Live</span><span>Travel media</span></div>
+      </div>
+      <p class="c-hook">The practical guide to visiting Los Angeles for the 2028 Olympics, built as a media business from the start.</p>
+      <span class="c-toggle">Case study <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+    </summary>
+    <div class="c-body">
+      <ul class="c-facts">
+        <li><b>35+</b><span>neighborhood guides</span></li>
+        <li><b>50+</b><span>restaurant picks</span></li>
+        <li><b>$99 to $5,000</b><span>monthly advertising tiers</span></li>
+      </ul>
+      <div class="c-story">
+        <h4>The problem</h4>
+        <p>LA is spread out, car-heavy and confusing for first-time visitors, and Olympic venues are scattered across the region. Visitors need practical answers, and local businesses need a way to reach them.</p>
+        <h4>What we built</h4>
+        <ul>
+          <li>Neighborhood and Olympic venue guides with transport notes</li>
+          <li>An itinerary builder with ready-made 3 to 14 day plans</li>
+          <li>Country-specific entry and culture notes for international visitors</li>
+          <li>Clearly labelled sponsored placements, so readers can trust the picks</li>
+        </ul>
+        <h4>How it earns</h4>
+        <p>A full advertising rate card, from $99 listings to venue-zone sponsorships and a $5,000 a month official partner tier, plus newsletter sponsorships and paid custom trip planning from $149.</p>
+        <a class="btn btn-line" href="https://thelacityguide.com" target="_blank" rel="noopener">Visit thelacityguide.com</a>
+      </div>
+      <span></span>
     </div>
-    <div>
-      <p class="p-pitch">An independent visitor guide to Los Angeles for the 2028 Olympics: neighborhoods, venue transport, honest dining picks and an itinerary builder, with country-specific entry and culture notes for a global audience. Backed by an advertising rate card from single listings to six-figure sponsorships, plus a paid concierge trip-planning service.</p>
-      <p class="p-built"><b>Built:</b> content strategy, itinerary builder, monetization design, international UX</p>
-    </div>
-  </article>
+  </details>
 </section>
 
 <section id="how" aria-labelledby="how-h">
-  <h2 id="how-h">What all that shipping teaches you</h2>
-  <p class="intro">The through-line isn't the industry. It's the habit: find a real problem, ship something that works, and make the money side hold together.</p>
-  <div class="how">
-    <div>
-      <h3>Product and strategy</h3>
-      <ul>
-        <li>Scoping an idea down to something one person can build and ship</li>
-        <li>Positioning and copy a stranger understands in five seconds</li>
-        <li>Phased go-to-market, from one city to a national rollout</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Engineering</h3>
-      <ul>
-        <li>Full-stack builds across web and React Native</li>
-        <li>Geospatial data with PostgreSQL and PostGIS</li>
-        <li>AI for matching, translation and itinerary generation</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Monetization</h3>
-      <ul>
-        <li>Stripe subscriptions and one-time checkout</li>
-        <li>Affiliate revenue across hotels, flights, tours and tickets</li>
-        <li>Sponsorship and advertising rate cards, built from scratch</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Craft</h3>
-      <ul>
-        <li>Multilingual, accessible interfaces for global audiences</li>
-        <li>Real-time features: live status, alerts, offline mode</li>
-        <li>SEO and metadata done properly, not as an afterthought</li>
-      </ul>
-    </div>
+  <h2 id="how-h">How we work</h2>
+  <p class="intro">A short path from your first email to a product people use. You always know what's being built, why, and what's next.</p>
+  <ol class="steps">
+    <li><h3>Talk it through</h3><p>Tell us the problem and who it's for. We'll say honestly whether we're the right team for it.</p></li>
+    <li><h3>Agree the scope</h3><p>What ships first, what it takes, and how the product earns or saves money. Written down before any build starts.</p></li>
+    <li><h3>Build and show</h3><p>You see working software early and often, not slide decks, and steer it as it takes shape.</p></li>
+    <li><h3>Launch and grow</h3><p>We take it live with analytics and SEO in place, then keep improving it with you if you want us to.</p></li>
+  </ol>
+  <div class="beliefs">
+    <div><h3>Make it plain</h3><p>If a stranger can't understand it in five seconds, it isn't finished. That goes for the interface, the copy and the pricing page.</p></div>
+    <div><h3>Ship the real thing</h3><p>A working product in front of real people beats a perfect plan. We scope small, launch, then improve.</p></div>
+    <div><h3>Make the money work</h3><p>Every product we build has a clear way to earn, whether that's subscriptions, affiliates, sponsors or a paid tier.</p></div>
+    <div><h3>Design for the hard moment</h3><p>Someone anxious, in a hurry, on a cheap phone or reading in their second language. If it works for them, it works for everyone.</p></div>
+  </div>
+  <p class="stack"><b>Tools we use:</b> React and React Native, PostgreSQL with PostGIS, Firebase, Redis, Stripe, the Claude API, Cloudflare and AWS. We're happy to work in the stack your team already has.</p>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <h2 id="faq-h">Questions people ask first</h2>
+  <div class="faq">
+    <details>
+      <summary>What kind of projects do you take on?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></summary>
+      <p>New products built from scratch, new features for a product you already run, and focused pieces like an AI feature, a live map or a payments setup. Our own work spans civic tech, healthtech, crisis response, sports and travel.</p>
+    </details>
+    <details>
+      <summary>Can we see work that isn't listed here?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></summary>
+      <p>Most of what we've built runs on public sites we don't list, and some is client work under NDA. On a call, we can walk you through the work that's relevant to you and that we're able to share.</p>
+    </details>
+    <details>
+      <summary>Do you only build from scratch?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></summary>
+      <p>No. We can pick up an existing codebase, join your team on a specific piece, or take an idea all the way from a blank page to launch.</p>
+    </details>
+    <details>
+      <summary>How do we get started?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></summary>
+      <p>Email <a href="mailto:info@chocoberryexclusive.com?subject=New%20project%20for%20Chocoberry">info@chocoberryexclusive.com</a> with a few lines about the problem, who it's for and any deadline. We'll reply to set up a call.</p>
+    </details>
   </div>
 </section>
 
 <section class="contact" id="contact" aria-labelledby="contact-h">
   <h2 id="contact-h">Have something that needs to make sense?</h2>
-  <p class="intro" style="margin-bottom:0">We take on product builds and partnerships for teams who need an idea turned into something real, fast.</p>
-  <a class="mail" href="mailto:info@chocoberryexclusive.com">info@<wbr>chocoberryexclusive.com</a>
+  <p class="intro" style="margin-bottom:0">Tell us what you're building, who it's for and when you need it. A few lines is plenty to start.</p>
+  <a class="mail" href="mailto:info@chocoberryexclusive.com?subject=New%20project%20for%20Chocoberry">info@<wbr>chocoberryexclusive.com</a>
+  <div class="actions">
+    <a class="btn btn-berry" href="mailto:info@chocoberryexclusive.com?subject=New%20project%20for%20Chocoberry">Start a project</a>
+    <button class="btn btn-line" type="button" id="copy" hidden>Copy email</button>
+    <span class="copied" id="copied" aria-live="polite"></span>
+  </div>
 </section>
 </main>
 
 <footer>
-  <span>Chocoberry</span>
-  <span>chocoberryexclusive.com</span>
+  <span>© Chocoberry</span>
+  <span><a href="#work">Work</a> &nbsp; <a href="#how">How we work</a> &nbsp; <a href="mailto:info@chocoberryexclusive.com">info@chocoberryexclusive.com</a></span>
 </footer>
 </div>
 
 <script>
 (function(){
+  /* translator */
   var examples = [
     { tab:"Council agenda", product:"Municipal Watch", url:"https://municipalwatch.org",
       src:"City council agenda, item 7(b)",
@@ -297,7 +513,6 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
   var tr = document.getElementById('tr');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var i = 0, plain = false;
-
   tr.innerHTML =
     '<div class="tr-tabs" role="tablist" aria-label="Examples"></div>' +
     '<div class="tr-sheet" role="tabpanel">' +
@@ -306,18 +521,15 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
       '<div class="tr-foot"><button class="btn btn-berry" id="tr-btn" type="button"></button>' +
       '<span class="tr-by" id="tr-by"></span></div>' +
     '</div>';
-
   var tabs = tr.querySelector('.tr-tabs'), text = document.getElementById('tr-text'),
       btn = document.getElementById('tr-btn'), src = document.getElementById('tr-src'),
       state = document.getElementById('tr-state'), by = document.getElementById('tr-by');
-
   examples.forEach(function(ex, n){
     var b = document.createElement('button');
     b.type = 'button'; b.setAttribute('role','tab'); b.textContent = ex.tab;
     b.addEventListener('click', function(){ i = n; plain = false; render(false); });
     tabs.appendChild(b);
   });
-
   function words(str){
     text.textContent = '';
     str.split(' ').forEach(function(w, n){
@@ -340,6 +552,57 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
   }
   btn.addEventListener('click', function(){ plain = !plain; render(true); });
   render(false);
+
+  /* live check: are the product sites online right now? */
+  var dots = document.querySelectorAll('[data-site]');
+  var proof = document.getElementById('proof'), proofText = document.getElementById('proof-text');
+  var up = 0, done = 0;
+  function check(url){
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var t = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 8000);
+    return fetch(url + '/?ping=' + Date.now(), { mode:'no-cors', cache:'no-store', signal: ctrl ? ctrl.signal : undefined })
+      .then(function(){ clearTimeout(t); return true; }, function(){ clearTimeout(t); return false; });
+  }
+  if (window.fetch) {
+    Array.prototype.forEach.call(dots, function(d){
+      check(d.getAttribute('data-site')).then(function(ok){
+        done++;
+        if (ok) { up++; d.classList.add('ok'); d.parentNode.title = 'Online, checked just now'; }
+        if (done === dots.length && up === dots.length) {
+          proofText.textContent = 'All ' + up + ' live product sites are online, checked from your browser just now';
+          proof.hidden = false;
+        }
+      });
+    });
+  }
+
+  /* open a case study when its link is followed */
+  function openFromHash(){
+    var el = location.hash && document.querySelector(location.hash);
+    if (el && el.tagName === 'DETAILS') el.open = true;
+  }
+  window.addEventListener('hashchange', openFromHash);
+  Array.prototype.forEach.call(document.querySelectorAll('a[href^="#c-"]'), function(l){
+    l.addEventListener('click', function(){ var d = document.querySelector(l.getAttribute('href')); if (d) d.open = true; });
+  });
+  openFromHash();
+
+  /* nav border on scroll */
+  var bar = document.getElementById('bar');
+  function onScroll(){ bar.classList.toggle('is-scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, { passive:true }); onScroll();
+
+  /* copy email */
+  var copy = document.getElementById('copy'), copied = document.getElementById('copied');
+  if (navigator.clipboard) {
+    copy.hidden = false;
+    copy.addEventListener('click', function(){
+      navigator.clipboard.writeText('info@chocoberryexclusive.com').then(function(){
+        copied.textContent = 'Copied';
+        setTimeout(function(){ copied.textContent = ''; }, 2400);
+      });
+    });
+  }
 })();
 </script>
 </body>
