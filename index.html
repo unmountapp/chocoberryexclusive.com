@@ -176,7 +176,7 @@ h3{font-family:var(--sans);color:var(--navy);font-weight:600;line-height:1.25;le
 .c-body{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr) 120px;gap:32px;padding:0 0 48px}
 .c-facts{margin:0;padding:0;list-style:none}
 .c-facts li{padding:14px 0;border-top:1px solid var(--line);display:flex;flex-direction:column}
-.c-facts b{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--navy);line-height:1.15;font-variation-settings:"opsz" 36}
+.c-facts b{font-family:var(--sans);font-size:24px;font-weight:600;color:var(--navy);line-height:1.2;letter-spacing:-.01em;font-variant-numeric:lining-nums}
 .c-facts span{font-size:14px;color:var(--muted)}
 .c-story h4{font-size:13.5px;font-weight:600;color:var(--navy);margin:0 0 6px;letter-spacing:.01em}
 .c-story p,.c-story ul{margin:0 0 26px;max-width:36em}
@@ -190,7 +190,7 @@ h3{font-family:var(--sans);color:var(--navy);font-weight:600;line-height:1.25;le
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0 0 88px;padding:0;list-style:none;counter-reset:s;border-top:2px solid var(--navy)}
 .steps li{counter-increment:s;padding:26px 28px 0 0;position:relative}
 .steps li + li{padding-left:28px;border-left:1px solid var(--line)}
-.steps li::before{content:counter(s);display:block;font-family:var(--serif);font-weight:700;font-size:44px;line-height:1;color:var(--sand);margin-bottom:18px;font-variation-settings:"opsz" 72}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--sans);font-weight:600;font-size:19px;line-height:1;font-variant-numeric:tabular-nums lining-nums;margin-bottom:20px}
 .steps h3{font-size:19px;margin:0 0 8px}
 .steps p{margin:0;color:var(--muted);font-size:15.5px}
 .beliefs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 72px}
@@ -239,6 +239,68 @@ dialog.pal::backdrop{background:rgba(8,19,61,.35);backdrop-filter:blur(2px)}
 .pal li[aria-selected="true"] span{color:#C9CEE3}
 .pal .empty{padding:14px 12px;color:var(--muted);font-size:14px}
 .pal-foot{display:flex;gap:16px;padding:10px 16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+
+
+/* ---------- motion ---------- */
+html,body{overflow-x:clip}
+.hero{position:relative}
+.hero > *{position:relative;z-index:1}
+.sky{position:absolute;z-index:0 !important;top:-72px;bottom:0;left:50%;width:100vw;transform:translateX(-50%);overflow:hidden;pointer-events:none}
+.sky .glow{position:absolute;width:780px;height:780px;border-radius:50%;background:radial-gradient(closest-side,rgba(216,198,174,.55),rgba(216,198,174,0));left:var(--gx,62%);top:var(--gy,40%);transform:translate(-50%,-50%);transition:left 1.2s cubic-bezier(.2,.7,.2,1),top 1.2s cubic-bezier(.2,.7,.2,1);animation:breathe 9s ease-in-out infinite alternate}
+@keyframes breathe{from{opacity:.65;scale:.92}to{opacity:1;scale:1.06}}
+.sky svg{position:absolute;overflow:visible}
+.roof{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.r1{width:1100px;right:-260px;bottom:-140px;animation:drift1 22s ease-in-out infinite alternate}
+.r2{width:760px;left:-220px;bottom:-60px;animation:drift2 26s ease-in-out infinite alternate}
+.r3{width:420px;right:30%;top:40px;animation:drift3 18s ease-in-out infinite alternate}
+@keyframes drift1{from{transform:translate(0,0) rotate(0deg)}to{transform:translate(-60px,-36px) rotate(-2deg)}}
+@keyframes drift2{from{transform:translate(0,0)}to{transform:translate(70px,-50px)}}
+@keyframes drift3{from{transform:translate(0,0) rotate(0deg)}to{transform:translate(-40px,30px) rotate(3deg)}}
+.roof path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.4s cubic-bezier(.3,.6,.2,1) forwards}
+.roof path:nth-child(2){animation-delay:.25s}.roof path:nth-child(3){animation-delay:.5s}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* headline: words rise in once */
+h1 .wd{display:inline-block;opacity:0;transform:translateY(.45em);animation:wd .8s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes wd{to{opacity:1;transform:none}}
+.hero .lede,.hero .actions,.hero .avail{animation:fadeup .9s cubic-bezier(.2,.7,.2,1) both}
+.hero .avail{animation-delay:.05s}.hero .lede{animation-delay:.55s}.hero .actions{animation-delay:.7s}
+.eng{animation:fadeup 1s cubic-bezier(.2,.7,.2,1) .35s both}
+@keyframes fadeup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* engine autoplay progress */
+.eng-prog{height:2px;margin:0 6px 8px;border-radius:2px;background:rgba(255,255,255,.12);overflow:hidden}
+.eng-prog i{display:block;height:100%;width:0;background:var(--sand)}
+.eng-prog.run i{animation:prog var(--dur,4s) linear forwards}
+.eng.is-paused .eng-prog i{animation-play-state:paused}
+@keyframes prog{to{width:100%}}
+.eng-auto{font:inherit;font-size:12.5px;color:#C9CEE3;background:none;border:0;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.eng-auto:hover{color:#fff}
+
+/* moving band */
+.band{width:100vw;margin-left:calc(50% - 50vw);background:var(--navy);color:#E9EBF5;overflow:hidden;border-top:1px solid var(--navy);position:relative}
+.band-track{display:flex;width:max-content;animation:band 48s linear infinite}
+.band:hover .band-track{animation-play-state:paused}
+.band ul{display:flex;align-items:center;margin:0;padding:0;list-style:none}
+.band li{display:flex;align-items:center;gap:14px;padding:20px 28px;white-space:nowrap;font-size:16px}
+.band li b{font-family:var(--serif);font-weight:700;font-size:21px;color:#fff;font-variation-settings:"opsz" 36}
+.band li span{color:#B9BFD8}
+.band svg{width:26px;height:12px;flex:none;margin-left:28px}
+@keyframes band{to{transform:translateX(-50%)}}
+
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.motion .matrix .yes{transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.motion .matrix-wrap.in .yes{transform:scale(1)}
+.matrix tr:nth-child(2) .yes{transition-delay:.06s}.matrix tr:nth-child(3) .yes{transition-delay:.12s}.matrix tr:nth-child(4) .yes{transition-delay:.18s}.matrix tr:nth-child(5) .yes{transition-delay:.24s}
+
+@media (prefers-reduced-motion:reduce){
+  .sky .glow,.r1,.r2,.r3,.roof path,h1 .wd,.hero .lede,.hero .actions,.hero .avail,.eng,.band-track{animation:none !important;opacity:1;transform:none;stroke-dashoffset:0}
+  .band-track{flex-wrap:wrap}
+  .rv{opacity:1;transform:none;transition:none}
+  .matrix .yes{transform:none;transition:none}
+}
 
 @media (max-width:1000px){
   .steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:36px}
@@ -313,6 +375,12 @@ dialog.pal::backdrop{background:rgba(8,19,61,.35);backdrop-filter:blur(2px)}
 <div class="wrap">
 <main id="main">
 <div class="hero">
+  <div class="sky" aria-hidden="true">
+    <span class="glow" id="glow"></span>
+    <svg class="r1" viewBox="0 0 1100 520"><g class="roof" stroke-width="40"><path pathLength="1" d="M60 500 L520 60 L1060 500" stroke="#E9DACA"/><path pathLength="1" d="M180 500 L560 140 L960 500" stroke="#EFE2D4"/><path pathLength="1" d="M470 500 L600 380 L730 500" stroke="#E4D3C1"/></g></svg>
+    <svg class="r2" viewBox="0 0 760 380"><g class="roof" stroke-width="30"><path pathLength="1" d="M40 360 L360 50 L720 360" stroke="#EFE3D6"/><path pathLength="1" d="M150 360 L390 130 L640 360" stroke="#F2E7DB"/></g></svg>
+    <svg class="r3" viewBox="0 0 420 220"><g class="roof" stroke-width="16"><path pathLength="1" d="M20 205 L200 25 L400 205" stroke="#E6D6C5"/></g></svg>
+  </div>
   <div>
     <p class="avail"><span class="dot pulse" aria-hidden="true"></span>Taking on new projects</p>
     <h1>We turn confusing things into products people can use.</h1>
@@ -332,6 +400,9 @@ dialog.pal::backdrop{background:rgba(8,19,61,.35);backdrop-filter:blur(2px)}
       <p><strong>A 4,200 sq ft restaurant on your block wants to serve a full bar until 2 a.m. The council votes Tuesday, and you can comment until then.</strong></p>
     </div>
   </div>
+</div>
+<div class="band" aria-label="What we've built">
+  <div class="band-track"><ul><li><b>Municipal Watch</b><span>city hall, in plain English</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>ClearScan</b><span>scan reports patients understand</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>FIFAMap</b><span>World Cup trips in eight languages</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>HopeMap</b><span>help that’s open right now</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>The LA City Guide</b><span>LA for Olympic visitors</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>Special software</b><span>that explains, matches and plans</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>Payments</b><span>built in from day one</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li></ul><ul aria-hidden="true"><li><b>Municipal Watch</b><span>city hall, in plain English</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>ClearScan</b><span>scan reports patients understand</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>FIFAMap</b><span>World Cup trips in eight languages</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>HopeMap</b><span>help that’s open right now</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>The LA City Guide</b><span>LA for Olympic visitors</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>Special software</b><span>that explains, matches and plans</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li><li><b>Payments</b><span>built in from day one</span><svg viewBox="167 168 296 134" aria-hidden="true"><g stroke-linejoin="round" transform="matrix(1.1 0 0 .95 -31.5 14.95)"><path d="M352 205 L443 297 L403 297 L351 245 L298 297 L255 297 Z" fill="#A09694" stroke="#A09694" stroke-width="5"/><path d="M331 186 L349 204 L256 297 L218 297 Z" fill="#D8C6AE" stroke="#D8C6AE" stroke-width="4"/><path d="M313 172 L324 183 L213 294 L190 294 Z" fill="#fff" stroke="#fff" stroke-width="11"/><path d="M359.5 274 L384 297 L335 297 Z" fill="#fff" stroke="#fff" stroke-width="4"/></g></svg></li></ul></div>
 </div>
 
 <section id="services" aria-labelledby="services-h">
@@ -373,7 +444,7 @@ dialog.pal::backdrop{background:rgba(8,19,61,.35);backdrop-filter:blur(2px)}
     <table class="matrix">
       <caption id="matrix-cap" class="sr">What each product includes</caption>
       <thead>
-        <tr><th scope="col">Product</th><th scope="col">AI features</th><th scope="col">Live data and alerts</th><th scope="col">Maps</th><th scope="col">Payments and revenue</th><th scope="col">Multilingual</th><th scope="col">Mobile app</th></tr>
+        <tr><th scope="col">Product</th><th scope="col">Special software</th><th scope="col">Live data and alerts</th><th scope="col">Maps</th><th scope="col">Payments and revenue</th><th scope="col">Multilingual</th><th scope="col">Mobile app</th></tr>
       </thead>
       <tbody>
         <tr><th scope="row"><a href="#c-municipal">Municipal Watch</a></th><td><span class="yes" role="img" aria-label="Yes"></span></td><td><span class="yes" role="img" aria-label="Yes"></span></td><td><span class="no" role="img" aria-label="No"></span></td><td><span class="yes" role="img" aria-label="Yes"></span></td><td><span class="no" role="img" aria-label="No"></span></td><td><span class="no" role="img" aria-label="No"></span></td></tr>
@@ -423,7 +494,7 @@ dialog.pal::backdrop{background:rgba(8,19,61,.35);backdrop-filter:blur(2px)}
     <summary>
       <div>
         <h3 class="c-name">ClearScan</h3>
-        <div class="c-meta"><span class="chip"><span class="dot" aria-hidden="true"></span>Live</span><span class="chip">Healthtech</span><span class="chip">AI</span></div>
+        <div class="c-meta"><span class="chip"><span class="dot" aria-hidden="true"></span>Live</span><span class="chip">Healthtech</span><span class="chip">Special software</span></div>
       </div>
       <p class="c-hook">Patients often read their scan results before a doctor explains them. ClearScan explains them first, in seconds.</p>
       <span class="c-toggle">Case study <svg aria-hidden="true"><use href="#plus"/></svg></span>
@@ -665,8 +736,9 @@ dialog.pal::backdrop{background:rgba(8,19,61,.35);backdrop-filter:blur(2px)}
   var eng = document.getElementById('eng');
   var i = 0, plain = false;
   eng.innerHTML =
-    '<div class="eng-head"><span><b>Plain-language engine</b></span><span>Example output</span></div>' +
+    '<div class="eng-head"><span><b>Plain-language engine</b></span><button class="eng-auto" id="e-auto" type="button" hidden></button></div>' +
     '<div class="eng-tabs" role="tablist" aria-label="Examples"></div>' +
+    '<div class="eng-prog" id="e-prog" aria-hidden="true"><i></i></div>' +
     '<div class="sheet" role="tabpanel">' +
       '<p class="sheet-top"><span id="e-src"></span><b id="e-state"></b></p>' +
       '<p class="doc" id="e-text" aria-live="polite"></p>' +
@@ -682,7 +754,7 @@ dialog.pal::backdrop{background:rgba(8,19,61,.35);backdrop-filter:blur(2px)}
     ex.gBefore = grade(ex.before); ex.gAfter = grade(ex.after);
     var b = document.createElement('button');
     b.type = 'button'; b.setAttribute('role','tab'); b.textContent = ex.tab;
-    b.addEventListener('click', function(){ i = n; plain = false; render(false); });
+    b.addEventListener('click', function(){ userTook(); i = n; plain = false; render(false); });
     tabs.appendChild(b);
   });
 
@@ -717,8 +789,70 @@ dialog.pal::backdrop{background:rgba(8,19,61,.35);backdrop-filter:blur(2px)}
     btn.textContent = plain ? 'Show the original' : 'Make it plain';
     by.innerHTML = 'Example of <a href="' + ex.url + '" target="_blank" rel="noopener">' + ex.product + '</a>';
   }
-  btn.addEventListener('click', function(){ plain = !plain; render(true); });
+  btn.addEventListener('click', function(){ userTook(); plain = !plain; render(true); });
   render(false);
+
+  /* the engine plays on its own until someone takes over */
+  var autoBtn = document.getElementById('e-auto'), prog = document.getElementById('e-prog');
+  var auto = !reduce, timer = null, held = false, inView = true;
+  function setAutoLabel(){ autoBtn.textContent = auto ? 'Pause demo' : 'Play demo'; autoBtn.setAttribute('aria-pressed', auto ? 'true' : 'false'); }
+  function startProg(ms){ prog.classList.remove('run'); void prog.offsetWidth; prog.style.setProperty('--dur', ms + 'ms'); prog.classList.add('run'); }
+  function stopProg(){ prog.classList.remove('run'); }
+  function schedule(){
+    clearTimeout(timer);
+    if (!auto || held || !inView || document.hidden) { stopProg(); return; }
+    var ms = plain ? 5600 : 3600;
+    startProg(ms);
+    timer = setTimeout(function(){
+      if (!plain) { plain = true; render(true); }
+      else { i = (i + 1) % examples.length; plain = false; render(false); }
+      schedule();
+    }, ms);
+  }
+  function userTook(){ if (auto) { auto = false; setAutoLabel(); schedule(); } }
+  if (!reduce) {
+    autoBtn.hidden = false; setAutoLabel();
+    autoBtn.addEventListener('click', function(){ auto = !auto; setAutoLabel(); schedule(); });
+    eng.addEventListener('mouseenter', function(){ held = true; eng.classList.add('is-paused'); clearTimeout(timer); });
+    eng.addEventListener('mouseleave', function(){ held = false; eng.classList.remove('is-paused'); schedule(); });
+    eng.addEventListener('focusin', function(e){ if (e.target !== autoBtn) { held = true; clearTimeout(timer); stopProg(); } });
+    eng.addEventListener('focusout', function(){ held = false; schedule(); });
+    document.addEventListener('visibilitychange', schedule);
+    if ('IntersectionObserver' in window) new IntersectionObserver(function(en){ inView = en[0].isIntersecting; schedule(); }).observe(eng);
+    setTimeout(schedule, 1400);
+  }
+
+  /* headline words rise in */
+  if (!reduce) {
+    var h1 = document.querySelector('h1');
+    var words = h1.textContent.split(' ');
+    h1.setAttribute('aria-label', h1.textContent);
+    h1.innerHTML = words.map(function(w, n){ return '<span class="wd" aria-hidden="true" style="animation-delay:' + (0.12 + n * 0.06).toFixed(2) + 's">' + w + '</span>'; }).join(' ');
+  }
+
+  /* warm light follows the cursor across the hero */
+  var glow = document.getElementById('glow'), hero = document.querySelector('.hero');
+  if (glow && !reduce && window.matchMedia('(pointer:fine)').matches) {
+    hero.addEventListener('mousemove', function(e){
+      var r = hero.getBoundingClientRect();
+      glow.style.setProperty('--gx', (e.clientX / window.innerWidth * 100) + '%');
+      glow.style.setProperty('--gy', ((e.clientY - r.top + 72) / (r.height + 72) * 100) + '%');
+    });
+  }
+
+  /* sections glide in as they arrive */
+  if (!reduce && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('motion');
+    var targets = document.querySelectorAll('.head, .svc article, .matrix-wrap, .case, .steps li, .beliefs > div, .stack, .faq-side, .faq details');
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(x){ if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    Array.prototype.forEach.call(targets, function(t){
+      var sib = t.parentNode ? Array.prototype.indexOf.call(t.parentNode.children, t) : 0;
+      t.classList.add('rv'); t.style.transitionDelay = Math.min(sib, 4) * 0.07 + 's';
+      io.observe(t);
+    });
+  }
 
   /* ---------- live check of the product sites ---------- */
   var sites = ['https://municipalwatch.org','https://clearscan.org','https://fifamap.org','https://thelacityguide.com'];
